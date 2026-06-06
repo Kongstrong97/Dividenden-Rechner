@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kongstrong97.github.io/Dividenden-Rechner/sitemap.xml
+Sitemap: https://aktienrechner.info/sitemap.xml
