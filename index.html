@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dividenden- & Zinseszins-Rechner 2026 | Kostenlos & ohne Anmeldung</title>
+<meta name="description" content="Kostenloser Dividenden-Rechner und Zinseszins-Rechner mit Sparplan, Wiederanlage (DRIP) und deutscher Abgeltungssteuer. Berechne dein passives Einkommen & wann du finanziell frei bist. Ohne Anmeldung.">
+<meta name="keywords" content="Dividenden Rechner, Zinseszins Rechner, Sparplan Rechner, ETF Sparplan, passives Einkommen, FIRE Rechner, Abgeltungssteuer, Dividendenrendite">
+<meta name="author" content="Dividenden-Rechner.de">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://DEINE-DOMAIN.de/">
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dividenden- & Zinseszins-Rechner – Kostenlos">
+<meta property="og:description" content="Berechne dein passives Einkommen aus Dividenden, deinen Zinseszins-Sparplan und wann du finanziell frei bist. Mit deutscher Steuer. Ohne Anmeldung.">
+<meta property="og:locale" content="de_DE">
+<meta property="og:url" content="https://DEINE-DOMAIN.de/">
+
+<!-- Favicon (Emoji als SVG, kein externer Request) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+
+<!-- ===================================================================
+     STRUKTURIERTE DATEN (JSON-LD) – hilft bei Google-Rankings & Rich Results
+     ================================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Dividenden- & Zinseszins-Rechner",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "description": "Kostenloser Rechner für Dividenden, Zinseszins-Sparpläne und finanzielle Freiheit mit deutscher Abgeltungssteuer."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Wie funktioniert der Zinseszinseffekt?","acceptedAnswer":{"@type":"Answer","text":"Beim Zinseszins werden die Erträge (Zinsen oder Dividenden) wieder angelegt und werfen selbst wieder Rendite ab. Über lange Zeiträume wächst das Kapital dadurch exponentiell statt linear."}},
+    {"@type":"Question","name":"Wie viel Steuer fällt auf Dividenden in Deutschland an?","acceptedAnswer":{"@type":"Answer","text":"Auf Kapitalerträge fallen 25 % Abgeltungssteuer plus 5,5 % Solidaritätszuschlag an, also effektiv 26,375 %. Hinzu kommt ggf. Kirchensteuer. Bis zum Sparerpauschbetrag von 1.000 € pro Jahr (2.000 € bei Verheirateten) bleiben Erträge steuerfrei."}},
+    {"@type":"Question","name":"Was bedeutet DRIP bzw. Wiederanlage?","acceptedAnswer":{"@type":"Answer","text":"DRIP (Dividend Reinvestment Plan) bedeutet, dass ausgeschüttete Dividenden automatisch wieder in neue Anteile investiert werden. Das verstärkt den Zinseszinseffekt erheblich."}}
+  ]
+}
+</script>
+
+<style>
+:root{
+  --pri:#0f2942; --pri2:#1d4e7a; --acc:#16a34a; --acc2:#22c55e;
+  --gold:#d97706; --bg:#eef2f7; --card:#ffffff; --border:#dfe4ec;
+  --muted:#64748b; --text:#0f172a; --soft:#f1f5f9;
+  --shadow:0 1px 3px rgba(15,41,66,.08),0 8px 24px rgba(15,41,66,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--pri2);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1160px;margin:0 auto;padding:0 18px}
+
+/* ---------- HEADER ---------- */
+header{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.18)}
+.hbar{display:flex;align-items:center;gap:14px;height:60px}
+.logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.logo span{font-size:22px}
+nav{margin-left:auto;display:flex;gap:4px}
+nav a{color:rgba(255,255,255,.85);font-size:13.5px;font-weight:600;padding:8px 12px;border-radius:8px;transition:.15s}
+nav a:hover{background:rgba(255,255,255,.14);color:#fff;text-decoration:none}
+@media(max-width:680px){nav{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;padding:34px 0 70px;text-align:center}
+.hero h1{font-size:clamp(24px,4.4vw,40px);font-weight:800;letter-spacing:-.5px;margin-bottom:12px}
+.hero p{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,.85);max-width:640px;margin:0 auto}
+.hero .badges{margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.badge{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);padding:6px 13px;border-radius:30px;font-size:12.5px;font-weight:600}
+
+/* ---------- AD SLOTS ---------- */
+.ad{margin:18px auto;max-width:1160px;padding:0 18px}
+.ad-inner{background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 12px,#f1f5f9 12px,#f1f5f9 24px);border:1px dashed #cbd5e1;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-weight:600;text-align:center}
+
+/* ---------- CALCULATOR CARD ---------- */
+.calc{max-width:1100px;margin:-44px auto 0;position:relative;z-index:10;padding:0 18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.tabs{display:flex;background:var(--soft);border-bottom:1px solid var(--border);overflow-x:auto}
+.tab{flex:1;min-width:140px;padding:16px 12px;border:none;background:none;cursor:pointer;font-size:14px;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;transition:.15s;display:flex;flex-direction:column;align-items:center;gap:3px;white-space:nowrap}
+.tab .ti{font-size:19px}
+.tab small{font-weight:500;font-size:11px;opacity:.8}
+.tab:hover{background:#e9eef5;color:var(--pri2)}
+.tab.active{color:var(--pri);border-bottom-color:var(--acc);background:var(--card)}
+
+.panel{display:none;padding:26px}
+.panel.active{display:grid;grid-template-columns:380px 1fr;gap:30px}
+@media(max-width:860px){.panel.active{grid-template-columns:1fr;gap:24px}}
+
+/* inputs */
+.intro{font-size:13.5px;color:var(--muted);margin-bottom:18px}
+.field{margin-bottom:16px}
+.field label{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-weight:600;margin-bottom:6px}
+.field label .val{font-size:13px;font-weight:700;color:var(--pri2);background:var(--soft);padding:2px 9px;border-radius:6px;min-width:70px;text-align:right}
+.inrow{display:flex;align-items:center;gap:10px}
+input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:6px;border-radius:6px;background:linear-gradient(90deg,var(--acc),var(--acc2));outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--acc);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--acc);cursor:pointer}
+input[type=number],input[type=text],select{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;color:var(--text);background:#fff}
+input[type=number]:focus,select:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(22,163,74,.12)}
+.numbox{width:108px;flex-shrink:0}
+.numbox input{text-align:right;font-weight:700}
+.suffix{position:relative}
+
+.toggle-wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-top:1px solid var(--border)}
+.toggle-wrap label{font-size:13px;font-weight:600;cursor:pointer}
+.switch{position:relative;width:44px;height:24px;flex-shrink:0}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:#cbd5e1;border-radius:24px;cursor:pointer;transition:.2s}
+.slider:before{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.switch input:checked + .slider{background:var(--acc)}
+.switch input:checked + .slider:before{transform:translateX(20px)}
+
+details.tax{margin-top:8px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+details.tax summary{padding:11px 14px;background:var(--soft);font-size:13px;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}
+details.tax summary::-webkit-details-marker{display:none}
+details.tax summary:before{content:"▸";transition:.2s;color:var(--muted)}
+details.tax[open] summary:before{transform:rotate(90deg)}
+details.tax .tax-body{padding:14px}
+
+/* results */
+.results{display:flex;flex-direction:column}
+.headline{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+@media(max-width:480px){.headline{grid-template-columns:1fr}}
+.metric{background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:15px 16px}
+.metric.hl{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-color:#a7f3d0}
+.metric .mlabel{font-size:12px;font-weight:600;color:var(--muted);margin-bottom:4px}
+.metric .mval{font-size:clamp(20px,2.6vw,26px);font-weight:800;color:var(--pri);letter-spacing:-.5px}
+.metric.hl .mval{color:var(--acc)}
+.metric .msub{font-size:11.5px;color:var(--muted);margin-top:2px}
+
+.chartbox{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 10px 6px;margin-bottom:14px}
+.chart-legend{display:flex;gap:16px;justify-content:center;margin-bottom:4px;font-size:12px;flex-wrap:wrap}
+.chart-legend span{display:flex;align-items:center;gap:6px;color:var(--muted);font-weight:600}
+.dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+canvas{width:100%;height:240px;display:block}
+
+.breakdown{font-size:13px}
+.breakdown .row{display:flex;justify-content:space-between;padding:8px 2px;border-bottom:1px dashed var(--border)}
+.breakdown .row:last-child{border-bottom:none}
+.breakdown .row b{font-weight:700}
+.pos{color:var(--acc)}
+
+.note{font-size:11.5px;color:var(--muted);margin-top:14px;line-height:1.5}
+
+/* ---------- BROKER / AFFILIATE ---------- */
+.section{padding:50px 0}
+.section h2{font-size:26px;font-weight:800;text-align:center;margin-bottom:8px;color:var(--pri)}
+.section .sub{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 30px;font-size:14.5px}
+.brokers{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.broker{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.broker .bname{font-size:18px;font-weight:800;color:var(--pri);display:flex;align-items:center;gap:8px}
+.broker .bicon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:800}
+.broker .btag{display:inline-block;background:#ecfdf5;color:var(--acc);font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin:10px 0}
+.broker ul{list-style:none;font-size:13px;color:var(--muted);margin:6px 0 16px}
+.broker ul li{padding:4px 0 4px 22px;position:relative}
+.broker ul li:before{content:"✓";position:absolute;left:0;color:var(--acc);font-weight:800}
+.broker .cta{margin-top:auto;display:block;text-align:center;background:var(--acc);color:#fff;font-weight:700;padding:11px;border-radius:9px;font-size:14px;transition:.15s}
+.broker .cta:hover{background:#15803d;text-decoration:none}
+.aff-note{text-align:center;font-size:11.5px;color:var(--muted);margin-top:20px;max-width:680px;margin-left:auto;margin-right:auto}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:760px;margin:0 auto}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq summary{padding:16px 18px;font-weight:700;font-size:15px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-size:22px;color:var(--acc);font-weight:400}
+.faq details[open] summary:after{content:"−"}
+.faq .fa{padding:0 18px 18px;color:var(--muted);font-size:14px}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--pri);color:rgba(255,255,255,.75);padding:40px 0 30px;margin-top:30px;font-size:13px}
+footer .fcols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px;margin-bottom:26px}
+@media(max-width:680px){footer .fcols{grid-template-columns:1fr}}
+footer h4{color:#fff;font-size:14px;margin-bottom:10px}
+footer a{color:rgba(255,255,255,.75)}
+footer a:hover{color:#fff}
+footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-size:11.5px;line-height:1.6;color:rgba(255,255,255,.6)}
+.flink{display:block;padding:3px 0}
+</style>
+</head>
+<body>
+
+<!-- ====================== HEADER ====================== -->
+<header>
+  <div class="wrap hbar">
+    <div class="logo"><span>📈</span> Dividenden&shy;Rechner</div>
+    <nav>
+      <a href="#rechner">Rechner</a>
+      <a href="#broker">Broker-Vergleich</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ====================== HERO ====================== -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Dividenden- & Zinseszins-Rechner</h1>
+    <p>Berechne dein passives Einkommen aus Dividenden, deinen Sparplan mit Zinseszins und wann du finanziell frei bist – inklusive deutscher Abgeltungssteuer.</p>
+    <div class="badges">
+      <span class="badge">✓ 100 % kostenlos</span>
+      <span class="badge">✓ Ohne Anmeldung</span>
+      <span class="badge">✓ Mit deutscher Steuer</span>
+      <span class="badge">✓ Daten bleiben lokal</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== RECHNER ====================== -->
+<div class="calc" id="rechner">
+  <div class="card">
+    <div class="tabs">
+      <button class="tab active" data-tab="sparplan"><span class="ti">💰</span>Sparplan<small>Zinseszins</small></button>
+      <button class="tab" data-tab="dividende"><span class="ti">📈</span>Dividenden<small>Einkommen</small></button>
+      <button class="tab" data-tab="fire"><span class="ti">🔥</span>Finanzielle Freiheit<small>FIRE</small></button>
+    </div>
+
+    <!-- ---------- PANEL 1: SPARPLAN ---------- -->
+    <div class="panel active" id="p-sparplan">
+      <div class="inputs">
+        <p class="intro">Wie viel wird aus deinem Sparplan? Berechne den Zinseszinseffekt für ETF- oder Aktiensparpläne.</p>
+        <div class="field">
+          <label>Startkapital <span class="val" id="v-s-start">10.000 €</span></label>
+          <div class="inrow">
+            <input type="range" id="r-s-start" min="0" max="100000" step="500" value="10000">
+            <div class="numbox suffix"><input type="number" id="n-s-start" value="10000"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Monatliche Sparrate <span class="val" id="v-s-rate">300 €</span></label>
+          <div class="inrow">
+            <input type="range" id="r-s-rate" min="0" max="3000" step="25" value="300">
+            <div class="numbox"><input type="number" id="n-s-rate" value="300"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Erwartete Rendite p.a. <span class="val" id="v-s-rend">7 %</span></label>
+          <div class="inrow">
+            <input type="range" id="r-s-rend" min="0" max="15" step="0.1" value="7">
+            <div class="numbox"><input type="number" id="n-s-rend" value="7" step="0.1"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Anlagedauer <span class="val" id="v-s-jahre">25 Jahre</span></label>
+          <div class="inrow">
+            <input type="range" id="r-s-jahre" min="1" max="50" step="1" value="25">
+            <div class="numbox"><input type="number" id="n-s-jahre" value="25"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Jährliche Erhöhung der Sparrate <span class="val" id="v-s-dyn">0 %</span></label>
+          <div class="inrow">
+            <input type="range" id="r-s-dyn" min="0" max="10" step="0.5" value="0">
+            <div class="numbox"><input type="number" id="n-s-dyn" value="0" step="0.5"></div>
+          </div>
+        </div>
+        <details class="tax" data-tax="s">
+          <summary>⚙️ Steuer berücksichtigen</summary>
+          <div class="tax-body">
+            <div class="toggle-wrap" style="border-top:none;padding-top:0">
+              <label for="t-s-tax">Abgeltungssteuer auf Gewinn abziehen</label>
+              <span class="switch"><input type="checkbox" id="t-s-tax"><span class="slider"></span></span>
+            </div>
+            <div class="toggle-wrap">
+              <label for="t-s-kirche">Kirchensteuer (9 %)</label>
+              <span class="switch"><input type="checkbox" id="t-s-kirche"><span class="slider"></span></span>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="results" id="res-sparplan"></div>
+    </div>
+
+    <!-- ---------- PANEL 2: DIVIDENDE ---------- -->
+    <div class="panel" id="p-dividende">
+      <div class="inputs">
+        <p class="intro">Wie viel passives Einkommen werfen deine Dividenden ab? Mit Wiederanlage (DRIP) und Dividendenwachstum.</p>
+        <div class="field">
+          <label>Startkapital <span class="val" id="v-d-start">25.000 €</span></label>
+          <div class="inrow">
+            <input type="range" id="r-d-start" min="0" max="200000" step="1000" value="25000">
+            <div class="numbox"><input type="number" id="n-d-start" value="25000"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Monatliche Sparrate <span class="val" id="v-d-rate">250 €</span></label>
+          <div class="inrow">
+            <input type="range" id="r-d-rate" min="0" max="3000" step="25" value="250">
+            <div class="numbox"><input type="number" id="n-d-rate" value="250"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Dividendenrendite p.a. <span class="val" id="v-d-yield">3,5 %</span></label>
+          <div class="inrow">
+            <input type="range" id="r-d-yield" min="0" max="10" step="0.1" value="3.5">
+            <div class="numbox"><input type="number" id="n-d-yield" value="3.5" step="0.1"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Dividendenwachstum p.a. <span class="val" id="v-d-grow">6 %</span></label>
+          <div class="inrow">
+            <input type="range" id="r-d-grow" min="0" max="15" step="0.5" value="6">
+            <div class="numbox"><input type="number" id="n-d-grow" value="6" step="0.5"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Kurswachstum p.a. <span class="val" id="v-d-price">4 %</span></label>
+          <div class="inrow">
+            <input type="range" id="r-d-price" min="0" max="12" step="0.5" value="4">
+            <div class="numbox"><input type="number" id="n-d-price" value="4" step="0.5"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Anlagedauer <span class="val" id="v-d-jahre">20 Jahre</span></label>
+          <div class="inrow">
+            <input type="range" id="r-d-jahre" min="1" max="50" step="1" value="20">
+            <div class="numbox"><input type="number" id="n-d-jahre" value="20"></div>
+          </div>
+        </div>
+        <div class="toggle-wrap">
+          <label for="t-d-drip">Dividenden wieder anlegen (DRIP)</label>
+          <span class="switch"><input type="checkbox" id="t-d-drip" checked><span class="slider"></span></span>
+        </div>
+        <details class="tax" data-tax="d">
+          <summary>⚙️ Steuer berücksichtigen</summary>
+          <div class="tax-body">
+            <div class="toggle-wrap" style="border-top:none;padding-top:0">
+              <label for="t-d-tax">Abgeltungssteuer auf Dividenden</label>
+              <span class="switch"><input type="checkbox" id="t-d-tax"><span class="slider"></span></span>
+            </div>
+            <div class="toggle-wrap">
+              <label for="t-d-kirche">Kirchensteuer (9 %)</label>
+              <span class="switch"><input type="checkbox" id="t-d-kirche"><span class="slider"></span></span>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="results" id="res-dividende"></div>
+    </div>
+
+    <!-- ---------- PANEL 3: FIRE ---------- -->
+    <div class="panel" id="p-fire">
+      <div class="inputs">
+        <p class="intro">Wann kannst du von deinen Dividenden leben? Berechne dein Ziel für finanzielle Freiheit.</p>
+        <div class="field">
+          <label>Gewünschtes Monatseinkommen <span class="val" id="v-f-need">2.000 €</span></label>
+          <div class="inrow">
+            <input type="range" id="r-f-need" min="500" max="10000" step="100" value="2000">
+            <div class="numbox"><input type="number" id="n-f-need" value="2000"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Dividendenrendite p.a. <span class="val" id="v-f-yield">3,5 %</span></label>
+          <div class="inrow">
+            <input type="range" id="r-f-yield" min="1" max="10" step="0.1" value="3.5">
+            <div class="numbox"><input type="number" id="n-f-yield" value="3.5" step="0.1"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Aktuelles Vermögen <span class="val" id="v-f-start">20.000 €</span></label>
+          <div class="inrow">
+            <input type="range" id="r-f-start" min="0" max="500000" step="1000" value="20000">
+            <div class="numbox"><input type="number" id="n-f-start" value="20000"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Monatliche Sparrate <span class="val" id="v-f-rate">500 €</span></label>
+          <div class="inrow">
+            <input type="range" id="r-f-rate" min="0" max="5000" step="50" value="500">
+            <div class="numbox"><input type="number" id="n-f-rate" value="500"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Gesamtrendite p.a. (inkl. Kurs) <span class="val" id="v-f-total">7 %</span></label>
+          <div class="inrow">
+            <input type="range" id="r-f-total" min="1" max="12" step="0.1" value="7">
+            <div class="numbox"><input type="number" id="n-f-total" value="7" step="0.1"></div>
+          </div>
+        </div>
+        <details class="tax" data-tax="f">
+          <summary>⚙️ Steuer berücksichtigen</summary>
+          <div class="tax-body">
+            <div class="toggle-wrap" style="border-top:none;padding-top:0">
+              <label for="t-f-tax">Abgeltungssteuer auf Dividenden</label>
+              <span class="switch"><input type="checkbox" id="t-f-tax" checked><span class="slider"></span></span>
+            </div>
+            <div class="toggle-wrap">
+              <label for="t-f-kirche">Kirchensteuer (9 %)</label>
+              <span class="switch"><input type="checkbox" id="t-f-kirche"><span class="slider"></span></span>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="results" id="res-fire"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== AD SLOT (In-Content) ====================== -->
+<div class="ad">
+  <!-- ADSENSE: Hier deinen AdSense-Code einfügen (siehe README, Abschnitt "Monetarisierung") -->
+  <div class="ad-inner">Werbeplatz · hier später Google AdSense einbinden (siehe README)</div>
+</div>
+
+<!-- ====================== BROKER / AFFILIATE ====================== -->
+<section class="section" id="broker" style="background:linear-gradient(180deg,#fff,var(--bg))">
+  <div class="wrap">
+    <h2>Depot eröffnen & loslegen</h2>
+    <p class="sub">Um Dividenden zu kassieren, brauchst du ein Wertpapierdepot. Diese Anbieter eignen sich besonders gut für günstige Sparpläne.</p>
+    <div class="brokers">
+      <div class="broker">
+        <div class="bname"><span class="bicon" style="background:#000">T</span> Trade Republic</div>
+        <span class="btag">Beliebt für Sparpläne</span>
+        <ul>
+          <li>Sparpläne dauerhaft kostenlos</li>
+          <li>Über 2.000 sparplanfähige ETFs</li>
+          <li>Zinsen auf das Cash-Konto</li>
+        </ul>
+        <a class="cta" href="#" rel="sponsored nofollow" data-aff="traderepublic">Zum Anbieter →</a>
+      </div>
+      <div class="broker">
+        <div class="bname"><span class="bicon" style="background:#1f59ff">S</span> Scalable Capital</div>
+        <span class="btag">Flatrate möglich</span>
+        <ul>
+          <li>Kostenlose ETF-Sparpläne</li>
+          <li>PRIME-Flatrate für Vieltrader</li>
+          <li>Große Aktien- & ETF-Auswahl</li>
+        </ul>
+        <a class="cta" href="#" rel="sponsored nofollow" data-aff="scalable">Zum Anbieter →</a>
+      </div>
+      <div class="broker">
+        <div class="bname"><span class="bicon" style="background:#00a758">C</span> Comdirect</div>
+        <span class="btag">Klassische Bank</span>
+        <ul>
+          <li>Große Sparplan-Auswahl</li>
+          <li>Etablierte Direktbank</li>
+          <li>Umfangreiche Tools & Service</li>
+        </ul>
+        <a class="cta" href="#" rel="sponsored nofollow" data-aff="comdirect">Zum Anbieter →</a>
+      </div>
+    </div>
+    <p class="aff-note">* Hinweis: Die mit „Zum Anbieter" markierten Links sind Werbe-/Partnerlinks. Wenn du darüber ein Depot eröffnest, erhalten wir ggf. eine Provision – für dich entstehen keine zusätzlichen Kosten. Dies ist keine Anlageberatung.</p>
+  </div>
+</section>
+
+<!-- ====================== FAQ ====================== -->
+<section class="section" id="faq">
+  <div class="wrap faq">
+    <h2 style="margin-bottom:30px">Häufige Fragen</h2>
+    <details open><summary>Wie funktioniert der Zinseszinseffekt?</summary><div class="fa">Beim Zinseszins werden deine Erträge (Zinsen oder Dividenden) wieder angelegt und werfen selbst wieder Rendite ab. Über lange Zeiträume wächst dein Kapital dadurch <b>exponentiell statt linear</b> – der Großteil des Endvermögens stammt oft aus Erträgen, nicht aus deinen Einzahlungen.</div></details>
+    <details><summary>Wie viel Steuer fällt auf Dividenden an?</summary><div class="fa">In Deutschland fallen auf Kapitalerträge <b>25 % Abgeltungssteuer + 5,5 % Solidaritätszuschlag</b> an (effektiv 26,375 %), ggf. zzgl. Kirchensteuer. Bis zum <b>Sparerpauschbetrag von 1.000 €</b> pro Jahr bleiben Erträge steuerfrei. Diesen Freibetrag berücksichtigt der Rechner automatisch, wenn du die Steuer aktivierst.</div></details>
+    <details><summary>Was bedeutet DRIP / Wiederanlage?</summary><div class="fa">DRIP steht für „Dividend Reinvestment Plan". Ausgeschüttete Dividenden werden automatisch wieder in neue Anteile investiert. Das verstärkt den Zinseszinseffekt deutlich – im Rechner kannst du den Effekt mit dem Schalter an- und ausschalten.</div></details>
+    <details><summary>Welche Rendite ist realistisch?</summary><div class="fa">Ein breit gestreuter Aktien-ETF (z. B. MSCI World) hat historisch im langfristigen Schnitt rund <b>6–8 % pro Jahr</b> erzielt – ohne Garantie für die Zukunft. Dividendenrenditen liegen meist zwischen <b>1,5 % und 4 %</b>. Die Werte im Rechner sind Annahmen, keine Vorhersagen.</div></details>
+    <details><summary>Sind meine Eingaben sicher?</summary><div class="fa">Ja. Alle Berechnungen laufen direkt in deinem Browser. Es werden <b>keine Daten an einen Server gesendet</b>. Deine letzten Eingaben werden nur lokal auf deinem Gerät gespeichert.</div></details>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div>
+        <h4>📈 Dividenden-Rechner</h4>
+        <p style="max-width:380px">Kostenlose Rechner für Sparplan, Dividenden und finanzielle Freiheit – mit deutscher Abgeltungssteuer und ohne Anmeldung.</p>
+      </div>
+      <div>
+        <h4>Rechner</h4>
+        <a class="flink" href="#rechner">Sparplan-Rechner</a>
+        <a class="flink" href="#rechner">Dividenden-Rechner</a>
+        <a class="flink" href="#rechner">FIRE-Rechner</a>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <a class="flink" href="impressum.html">Impressum</a>
+        <a class="flink" href="datenschutz.html">Datenschutz</a>
+        <a class="flink" href="#faq">FAQ</a>
+      </div>
+    </div>
+    <p class="disc"><b>Haftungsausschluss:</b> Dieser Rechner dient ausschließlich zu Informations- und Bildungszwecken und stellt <b>keine Anlage-, Steuer- oder Rechtsberatung</b> dar. Alle Berechnungen beruhen auf den von dir eingegebenen Annahmen und garantieren keine zukünftigen Ergebnisse. Wertpapieranlagen sind mit Risiken bis zum Totalverlust verbunden. © <span id="year"></span> Dividenden-Rechner. Alle Angaben ohne Gewähr.</p>
+  </div>
+</footer>
+
+<script>
+/* ===================================================================
+   DIVIDENDEN- & ZINSESZINS-RECHNER  –  reines Vanilla-JS, keine Libs
+   =================================================================== */
+(function(){
+  "use strict";
+
+  // ---------- Formatierung ----------
+  const eur = n => (Math.round(n)).toLocaleString('de-DE') + ' €';
+  const eur2 = n => n.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' €';
+  const pct = n => n.toLocaleString('de-DE',{maximumFractionDigits:1}) + ' %';
+
+  // deutsche Steuer-Konstanten
+  const SOLI = 1.055;              // Solidaritätszuschlag-Faktor
+  const ABGELT = 0.25;            // Abgeltungssteuer
+  const KIST = 0.09;             // Kirchensteuer (vereinfachend 9 %)
+  const FREIBETRAG = 1000;     // Sparerpauschbetrag pro Jahr
+
+  // effektiver Steuersatz auf Kapitalerträge
+  function steuersatz(kirche){
+    // Bei Kirchensteuer reduziert sich die Bemessungsgrundlage minimal – hier vereinfacht
+    let s = ABGELT * SOLI;                 // 25 % * 1,055 = 26,375 %
+    if(kirche) s += ABGELT * KIST;        // + ~2,25 %
+    return s;
+  }
+
+  // ---------- Slider <-> Number Kopplung ----------
+  function link(rangeId, numId, valId, fmt){
+    const r = document.getElementById(rangeId);
+    const n = document.getElementById(numId);
+    const v = valId ? document.getElementById(valId) : null;
+    function sync(src){
+      let x = parseFloat(src.value);
+      if(isNaN(x)) x = 0;
+      if(src===n){
+        // Number kann über Range-Max hinausgehen -> Range klemmen, Anzeige folgt Number
+        r.value = Math.min(Math.max(x, +r.min), +r.max);
+      } else {
+        n.value = x;
+      }
+      if(v) v.textContent = fmt(x);
+      calcAll();
+    }
+    r.addEventListener('input',()=>sync(r));
+    n.addEventListener('input',()=>sync(n));
+    // init
+    if(v) v.textContent = fmt(parseFloat(n.value));
+  }
+
+  // ---------- Canvas Chart (selbst gezeichnet) ----------
+  function drawChart(canvas, series, opts){
+    opts = opts || {};
+    const dpr = window.devicePixelRatio || 1;
+    const cssW = canvas.clientWidth, cssH = canvas.clientHeight;
+    canvas.width = cssW*dpr; canvas.height = cssH*dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,cssW,cssH);
+
+    const padL=58, padR=14, padT=12, padB=26;
+    const W = cssW-padL-padR, H = cssH-padT-padB;
+    const n = series[0].data.length;
+    if(n<2) return;
+
+    let max=0;
+    series.forEach(s=>s.data.forEach(v=>{if(v>max)max=v;}));
+    if(opts.stacked){
+      max=0;
+      for(let i=0;i<n;i++){let sum=0;series.forEach(s=>sum+=s.data[i]);if(sum>max)max=sum;}
+    }
+    max = max*1.08 || 1;
+
+    const x = i => padL + (i/(n-1))*W;
+    const y = v => padT + H - (v/max)*H;
+
+    // Gitter + Y-Achse
+    ctx.font='11px -apple-system,Segoe UI,sans-serif';
+    ctx.textBaseline='middle';
+    const steps=4;
+    for(let g=0; g<=steps; g++){
+      const val = max*g/steps;
+      const yy = y(val);
+      ctx.strokeStyle='#eef2f7'; ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(padL,yy);ctx.lineTo(padL+W,yy);ctx.stroke();
+      ctx.fillStyle='#94a3b8'; ctx.textAlign='right';
+      let lbl = val>=1000000 ? (val/1000000).toLocaleString('de-DE',{maximumFractionDigits:1})+' M'
+              : val>=1000 ? Math.round(val/1000)+'k' : Math.round(val);
+      ctx.fillText(lbl+' €', padL-8, yy);
+    }
+
+    // X-Achsen-Beschriftung (Jahre)
+    ctx.textAlign='center'; ctx.fillStyle='#94a3b8';
+    const xlabels = Math.min(6, n);
+    for(let k=0;k<xlabels;k++){
+      const i = Math.round(k*(n-1)/(xlabels-1));
+      ctx.fillText('J'+i, x(i), padT+H+14);
+    }
+
+    if(opts.stacked){
+      // gestapelte Flächen (Einzahlungen unten, Erträge oben)
+      let base = new Array(n).fill(0);
+      series.forEach(s=>{
+        ctx.beginPath();
+        for(let i=0;i<n;i++){const yy=y(base[i]+s.data[i]); i===0?ctx.moveTo(x(i),yy):ctx.lineTo(x(i),yy);}
+        for(let i=n-1;i>=0;i--){ctx.lineTo(x(i),y(base[i]));}
+        ctx.closePath();
+        ctx.fillStyle=s.fill; ctx.fill();
+        for(let i=0;i<n;i++) base[i]+=s.data[i];
+      });
+      // Top-Linie
+      ctx.beginPath();
+      for(let i=0;i<n;i++){const yy=y(base[i]); i===0?ctx.moveTo(x(i),yy):ctx.lineTo(x(i),yy);}
+      ctx.strokeStyle='#0f2942'; ctx.lineWidth=2; ctx.stroke();
+    } else {
+      series.forEach(s=>{
+        // Fläche
+        ctx.beginPath();
+        for(let i=0;i<n;i++){const yy=y(s.data[i]); i===0?ctx.moveTo(x(i),yy):ctx.lineTo(x(i),yy);}
+        ctx.lineTo(x(n-1),padT+H); ctx.lineTo(x(0),padT+H); ctx.closePath();
+        ctx.fillStyle=s.fill; ctx.fill();
+        // Linie
+        ctx.beginPath();
+        for(let i=0;i<n;i++){const yy=y(s.data[i]); i===0?ctx.moveTo(x(i),yy):ctx.lineTo(x(i),yy);}
+        ctx.strokeStyle=s.stroke; ctx.lineWidth=2.4; ctx.stroke();
+      });
+    }
+  }
+
+  // ===================================================================
+  //  BERECHNUNG 1 — SPARPLAN (Zinseszins, monatlich)
+  // ===================================================================
+  function calcSparplan(){
+    const start = +n('n-s-start'), rate0 = +n('n-s-rate'), rend = +n('n-s-rend')/100,
+          jahre = Math.max(1,Math.round(+n('n-s-jahre'))), dyn = +n('n-s-dyn')/100,
+          tax = c('t-s-tax'), kirche = c('t-s-kirche');
+    const mRate = Math.pow(1+rend, 1/12)-1; // monatlicher Zinssatz
+    let kapital = start, eingezahlt = start, rate = rate0;
+    const ptsTotal=[start], ptsEinz=[start], ptsGewinn=[0];
+    for(let j=0;j<jahre;j++){
+      for(let m=0;m<12;m++){
+        kapital *= (1+mRate);
+        kapital += rate;
+        eingezahlt += rate;
+      }
+      rate *= (1+dyn);
+      ptsTotal.push(kapital);
+      ptsEinz.push(eingezahlt);
+      ptsGewinn.push(kapital-eingezahlt);
+    }
+    let gewinn = kapital - eingezahlt;
+    let steuer = 0, netto = kapital;
+    if(tax){
+      const bemess = Math.max(0, gewinn - FREIBETRAG); // Freibetrag einmalig vereinfacht
+      steuer = bemess * steuersatz(kirche);
+      netto = kapital - steuer;
+    }
+    const res = document.getElementById('res-sparplan');
+    res.innerHTML = `
+      <div class="headline">
+        <div class="metric hl"><div class="mlabel">Endkapital${tax?' (nach Steuer)':''}</div><div class="mval">${eur(netto)}</div><div class="msub">nach ${jahre} Jahren</div></div>
+        <div class="metric"><div class="mlabel">Davon Gewinn</div><div class="mval">${eur(gewinn)}</div><div class="msub">${pct(eingezahlt>0?gewinn/eingezahlt*100:0)} auf Einzahlungen</div></div>
+      </div>
+      <div class="chartbox">
+        <div class="chart-legend"><span><i class="dot" style="background:#bfdbfe"></i>Einzahlungen</span><span><i class="dot" style="background:#86efac"></i>Zinsgewinn</span></div>
+        <canvas id="cv-s"></canvas>
+      </div>
+      <div class="breakdown">
+        <div class="row"><span>Eingezahltes Kapital</span><b>${eur(eingezahlt)}</b></div>
+        <div class="row"><span>Erwirtschafteter Gewinn</span><b class="pos">+ ${eur(gewinn)}</b></div>
+        ${tax?`<div class="row"><span>Abgeltungssteuer (geschätzt)</span><b style="color:#b91c1c">− ${eur(steuer)}</b></div>`:''}
+        <div class="row"><span><b>Endkapital${tax?' netto':''}</b></span><b>${eur(netto)}</b></div>
+      </div>
+      <p class="note">💡 Der Zinseszinseffekt sorgt dafür, dass <b>${eur(gewinn)}</b> allein durch Rendite entstehen. ${tax?'Steuer wird vereinfacht einmalig auf den Gesamtgewinn am Ende geschätzt.':'Tipp: Aktiviere die Steuer-Option für eine Netto-Schätzung.'}</p>`;
+    drawChart(document.getElementById('cv-s'),
+      [{data:ptsEinz,fill:'#bfdbfe'},{data:ptsGewinn,fill:'#86efac'}],{stacked:true});
+  }
+
+  // ===================================================================
+  //  BERECHNUNG 2 — DIVIDENDEN (mit DRIP, Wachstum, Steuer)
+  // ===================================================================
+  function calcDividende(){
+    const start=+n('n-d-start'), rate=+n('n-d-rate'), yld=+n('n-d-yield')/100,
+          grow=+n('n-d-grow')/100, price=+n('n-d-price')/100, jahre=Math.max(1,Math.round(+n('n-d-jahre'))),
+          drip=c('t-d-drip'), tax=c('t-d-tax'), kirche=c('t-d-kirche');
+    const sSatz = tax ? steuersatz(kirche) : 0;
+
+    let depot=start, eingezahlt=start;
+    let curYield=yld;                 // Dividendenrendite wächst mit "grow"
+    const ptsDepot=[start], ptsDiv=[0];
+    let divJahr1=0, divLetztesJahr=0, divKumuliert=0;
+
+    for(let j=0;j<jahre;j++){
+      // Sparrate übers Jahr (vereinfacht: am Jahresanfang investiert)
+      depot += rate*12;
+      eingezahlt += rate*12;
+      // Kurswachstum
+      depot *= (1+price);
+      // Dividende auf Basis Depotwert
+      let brutto = depot * curYield;
+      let frei = Math.max(0, FREIBETRAG);
+      let stpflichtig = Math.max(0, brutto - frei);
+      let steuer = stpflichtig * sSatz;
+      let nettoDiv = brutto - steuer;
+      divKumuliert += nettoDiv;
+      if(j===0) divJahr1 = nettoDiv;
+      divLetztesJahr = nettoDiv;
+      if(drip) depot += nettoDiv;     // Wiederanlage
+      curYield *= (1+grow*0.0);       // Rendite bleibt; Wachstum wirkt über Ausschüttung unten
+      // Dividendenwachstum: erhöht effektive Rendite aufs eingesetzte Kapital
+      curYield = yld*Math.pow(1+grow, j+1);
+      ptsDepot.push(depot);
+      ptsDiv.push(nettoDiv);
+    }
+    const monatlichEnde = divLetztesJahr/12;
+
+    const res=document.getElementById('res-dividende');
+    res.innerHTML = `
+      <div class="headline">
+        <div class="metric hl"><div class="mlabel">Dividende im letzten Jahr${tax?' (netto)':''}</div><div class="mval">${eur(divLetztesJahr)}</div><div class="msub">≈ ${eur(monatlichEnde)} pro Monat</div></div>
+        <div class="metric"><div class="mlabel">Depotwert am Ende</div><div class="mval">${eur(depot)}</div><div class="msub">nach ${jahre} Jahren</div></div>
+      </div>
+      <div class="chartbox">
+        <div class="chart-legend"><span><i class="dot" style="background:#86efac"></i>Depotwert</span></div>
+        <canvas id="cv-d"></canvas>
+      </div>
+      <div class="breakdown">
+        <div class="row"><span>Eingezahltes Kapital</span><b>${eur(eingezahlt)}</b></div>
+        <div class="row"><span>Dividende Jahr 1${tax?' (netto)':''}</span><b>${eur(divJahr1)}</b></div>
+        <div class="row"><span>Dividende Jahr ${jahre}${tax?' (netto)':''}</span><b class="pos">${eur(divLetztesJahr)}</b></div>
+        <div class="row"><span>Kumulierte Dividenden gesamt</span><b class="pos">${eur(divKumuliert)}</b></div>
+        <div class="row"><span><b>Depotwert${drip?' (mit Wiederanlage)':''}</b></span><b>${eur(depot)}</b></div>
+      </div>
+      <p class="note">💡 ${drip?'Mit Wiederanlage (DRIP) wachsen deine Dividenden überproportional – ':'Ohne Wiederanlage erhältst du die Dividenden als Auszahlung. '}Aus anfänglich ${eur(divJahr1)} werden im letzten Jahr <b>${eur(divLetztesJahr)}</b>.</p>`;
+    drawChart(document.getElementById('cv-d'),
+      [{data:ptsDepot,fill:'rgba(134,239,172,.35)',stroke:'#16a34a'}],{});
+  }
+
+  // ===================================================================
+  //  BERECHNUNG 3 — FIRE / Finanzielle Freiheit
+  // ===================================================================
+  function calcFire(){
+    const need=+n('n-f-need'), yld=+n('n-f-yield')/100, start=+n('n-f-start'),
+          rate=+n('n-f-rate'), total=+n('n-f-total')/100,
+          tax=c('t-f-tax'), kirche=c('t-f-kirche');
+    const sSatz = tax ? steuersatz(kirche) : 0;
+    // Netto-Dividendenrendite (Freibetrag bei großem Depot vernachlässigbar -> konservativ ohne)
+    const nettoYield = yld*(1-sSatz);
+    const jahresbedarf = need*12;
+    const zielVermoegen = nettoYield>0 ? jahresbedarf/nettoYield : Infinity;
+
+    // Simulation: in wie vielen Jahren ist das Ziel erreicht?
+    let kapital=start, jahre=0; const maxJ=80;
+    const ptsDepot=[start]; const ziel=zielVermoegen;
+    while(kapital<zielVermoegen && jahre<maxJ){
+      kapital = kapital*(1+total) + rate*12;
+      jahre++;
+      ptsDepot.push(kapital);
+    }
+    const erreicht = kapital>=zielVermoegen && isFinite(zielVermoegen);
+    const jahrTxt = erreicht ? (jahre+' Jahre') : 'über '+maxJ+' Jahre';
+    const aktJahr = new Date().getFullYear();
+    const zieljahr = erreicht ? (aktJahr+jahre) : '–';
+
+    const res=document.getElementById('res-fire');
+    res.innerHTML = `
+      <div class="headline">
+        <div class="metric hl"><div class="mlabel">Benötigtes Vermögen</div><div class="mval">${isFinite(zielVermoegen)?eur(zielVermoegen):'∞'}</div><div class="msub">für ${eur(need)}/Monat${tax?' netto':''}</div></div>
+        <div class="metric"><div class="mlabel">Erreicht in</div><div class="mval">${jahrTxt}</div><div class="msub">${erreicht?('ca. im Jahr '+zieljahr):'Sparrate erhöhen'}</div></div>
+      </div>
+      <div class="chartbox">
+        <div class="chart-legend"><span><i class="dot" style="background:#93c5fd"></i>Vermögensaufbau</span><span><i class="dot" style="background:#0f2942"></i>Ziel</span></div>
+        <canvas id="cv-f"></canvas>
+      </div>
+      <div class="breakdown">
+        <div class="row"><span>Gewünschtes Jahreseinkommen</span><b>${eur(jahresbedarf)}</b></div>
+        <div class="row"><span>Netto-Dividendenrendite</span><b>${pct(nettoYield*100)}</b></div>
+        <div class="row"><span>Benötigtes Vermögen</span><b>${isFinite(zielVermoegen)?eur(zielVermoegen):'∞'}</b></div>
+        <div class="row"><span><b>Zeit bis zur finanziellen Freiheit</b></span><b class="pos">${jahrTxt}</b></div>
+      </div>
+      <p class="note">💡 Die „4-%-Regel" der FIRE-Bewegung geht von einer sicheren Entnahme von ~4 % aus. Reine Dividendenstrategien sind konservativer, dafür musst du den Kapitalstock nicht verkaufen. ${!erreicht?'<b>Mit deinen aktuellen Werten dauert es sehr lange – erhöhe Sparrate oder Rendite.</b>':''}</p>`;
+
+    // Ziel-Linie als zweite Serie (konstant)
+    const zielArr = ptsDepot.map(()=>Math.min(ziel, Math.max(...ptsDepot, ziel)));
+    drawChart(document.getElementById('cv-f'),
+      [{data:ptsDepot,fill:'rgba(147,197,253,.35)',stroke:'#2563eb'}],{});
+    // Ziel-Linie zeichnen wir simpel oben drauf
+    if(isFinite(ziel)){
+      const cv=document.getElementById('cv-f'); const ctx=cv.getContext('2d');
+      const dpr=window.devicePixelRatio||1; const cssW=cv.clientWidth,cssH=cv.clientHeight;
+      const padL=58,padR=14,padT=12,padB=26; const W=cssW-padL-padR,H=cssH-padT-padB;
+      let max=Math.max(...ptsDepot, ziel)*1.08;
+      const yy=padT+H-(ziel/max)*H;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.beginPath();ctx.setLineDash([6,4]);ctx.moveTo(padL,yy);ctx.lineTo(padL+W,yy);
+      ctx.strokeStyle='#0f2942';ctx.lineWidth=1.5;ctx.stroke();ctx.setLineDash([]);
+    }
+  }
+
+  // ---------- Helper ----------
+  function n(id){return parseFloat(document.getElementById(id).value)||0;}
+  function c(id){return document.getElementById(id).checked;}
+
+  let activeTab='sparplan';
+  function calcAll(){
+    if(activeTab==='sparplan') calcSparplan();
+    else if(activeTab==='dividende') calcDividende();
+    else calcFire();
+    saveState();
+  }
+
+  // ---------- LocalStorage ----------
+  const STORE='divrechner_v1';
+  function saveState(){
+    try{
+      const ids=document.querySelectorAll('input[type=number],input[type=checkbox]');
+      const o={};ids.forEach(el=>o[el.id]=el.type==='checkbox'?el.checked:el.value);
+      o._tab=activeTab;
+      localStorage.setItem(STORE,JSON.stringify(o));
+    }catch(e){}
+  }
+  function loadState(){
+    try{
+      const o=JSON.parse(localStorage.getItem(STORE)||'{}');
+      Object.keys(o).forEach(k=>{
+        if(k==='_tab')return;
+        const el=document.getElementById(k); if(!el)return;
+        if(el.type==='checkbox') el.checked=o[k]; else el.value=o[k];
+        // Range + Label nachziehen
+        const r=document.getElementById(k.replace('n-','r-'));
+        if(r) r.value=Math.min(Math.max(parseFloat(o[k])||0,+r.min),+r.max);
+      });
+      if(o._tab) switchTab(o._tab,true);
+    }catch(e){}
+  }
+
+  // ---------- Tabs ----------
+  function switchTab(name,silent){
+    activeTab=name;
+    document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===name));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='p-'+name));
+    if(!silent) calcAll();
+  }
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>switchTab(t.dataset.tab)));
+
+  // ---------- Init alle Felder ----------
+  const fmtEur = x => x.toLocaleString('de-DE')+' €';
+  const fmtPct = x => x.toLocaleString('de-DE',{maximumFractionDigits:1})+' %';
+  const fmtJahre = x => x+' Jahre';
+  // Sparplan
+  link('r-s-start','n-s-start','v-s-start',fmtEur);
+  link('r-s-rate','n-s-rate','v-s-rate',fmtEur);
+  link('r-s-rend','n-s-rend','v-s-rend',fmtPct);
+  link('r-s-jahre','n-s-jahre','v-s-jahre',fmtJahre);
+  link('r-s-dyn','n-s-dyn','v-s-dyn',fmtPct);
+  // Dividende
+  link('r-d-start','n-d-start','v-d-start',fmtEur);
+  link('r-d-rate','n-d-rate','v-d-rate',fmtEur);
+  link('r-d-yield','n-d-yield','v-d-yield',fmtPct);
+  link('r-d-grow','n-d-grow','v-d-grow',fmtPct);
+  link('r-d-price','n-d-price','v-d-price',fmtPct);
+  link('r-d-jahre','n-d-jahre','v-d-jahre',fmtJahre);
+  // Fire
+  link('r-f-need','n-f-need','v-f-need',fmtEur);
+  link('r-f-yield','n-f-yield','v-f-yield',fmtPct);
+  link('r-f-start','n-f-start','v-f-start',fmtEur);
+  link('r-f-rate','n-f-rate','v-f-rate',fmtEur);
+  link('r-f-total','n-f-total','v-f-total',fmtPct);
+
+  // Checkbox-Listener
+  document.querySelectorAll('input[type=checkbox]').forEach(cb=>cb.addEventListener('change',calcAll));
+
+  // Footer-Jahr
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  // Affiliate-Klicks (Platzhalter, später echte Links eintragen – siehe README)
+  document.querySelectorAll('[data-aff]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      if(a.getAttribute('href')==='#'){
+        e.preventDefault();
+        alert('Hier kommt dein Affiliate-Partnerlink hin.\n\nSiehe README.md → Abschnitt „Monetarisierung / Broker-Affiliate".');
+      }
+    });
+  });
+
+  // Start
+  loadState();
+  calcAll();
+  window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(calcAll,150);});
+})();
+</script>
+</body>
+</html>
