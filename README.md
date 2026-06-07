@@ -97,7 +97,10 @@ Ersetze den Platzhalter-Block (`<div class="ad-inner">…</div>`) durch deinen e
 
 ### 4b) Broker-Affiliate (oft lukrativer als Werbung!)
 
-Im Abschnitt „Depot eröffnen" (`id="broker"`) sind drei Broker mit Platzhalter-Links (`href="#"`). So machst du sie scharf:
+Im Abschnitt „Depot eröffnen" (`id="broker"`) sind drei Broker mit Datentabellen (Zins, Gebühren, Sparpläne, Einlagensicherung – Stand Juni 2026) und Platzhalter-Links (`href="#"`). So machst du sie scharf:
+
+> ⚠️ **Konditionen aktuell halten:** Zinssätze und Gebühren ändern sich häufig. Die Werte in den Broker-Karten haben einen sichtbaren „Stand: …"-Hinweis. Prüfe sie alle paar Monate (Quellen z. B. die offiziellen Broker-Seiten, finanztip.de, justetf.com) und aktualisiere Zahl + Datum. Veraltete Finanzangaben schaden der Glaubwürdigkeit und können abmahnfähig sein.
+
 
 1. Bei Partnerprogrammen anmelden. Möglichkeiten:
    - **Direkt beim Broker** (Trade Republic, Scalable, Comdirect, ING haben teils eigene „Kunden-werben-Kunden" / Affiliate-Programme).

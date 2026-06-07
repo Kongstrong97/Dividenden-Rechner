@@ -163,6 +163,13 @@ canvas{width:100%;height:240px;display:block}
 .broker ul{list-style:none;font-size:13px;color:var(--muted);margin:6px 0 16px}
 .broker ul li{padding:4px 0 4px 22px;position:relative}
 .broker ul li:before{content:"✓";position:absolute;left:0;color:var(--acc);font-weight:800}
+.broker .bspecs{margin:4px 0 10px;font-size:12.5px}
+.broker .bspecs .srow{display:flex;justify-content:space-between;gap:10px;padding:6.5px 0;border-bottom:1px solid var(--border)}
+.broker .bspecs .srow:last-child{border-bottom:none}
+.broker .bspecs .sk{color:var(--muted);flex-shrink:0}
+.broker .bspecs .sv{font-weight:700;color:var(--text);text-align:right}
+.broker .bspecs .sv.hot{color:var(--acc)}
+.broker .bstand{font-size:10.5px;color:var(--muted);margin:0 0 14px;font-style:italic}
 .broker .cta{margin-top:auto;display:block;text-align:center;background:var(--acc);color:#fff;font-weight:700;padding:11px;border-radius:9px;font-size:14px;transition:.15s}
 .broker .cta:hover{background:#15803d;text-decoration:none}
 .aff-note{text-align:center;font-size:11.5px;color:var(--muted);margin-top:20px;max-width:680px;margin-left:auto;margin-right:auto}
@@ -417,38 +424,50 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
     <h2>Depot eröffnen & loslegen</h2>
     <p class="sub">Um Dividenden zu kassieren, brauchst du ein Wertpapierdepot. Diese Anbieter eignen sich besonders gut für günstige Sparpläne.</p>
     <div class="brokers">
+      <!-- ====== Trade Republic ====== -->
       <div class="broker">
         <div class="bname"><span class="bicon" style="background:#000">T</span> Trade Republic</div>
         <span class="btag">Beliebt für Sparpläne</span>
-        <ul>
-          <li>Sparpläne dauerhaft kostenlos</li>
-          <li>Über 2.000 sparplanfähige ETFs</li>
-          <li>Zinsen auf das Cash-Konto</li>
-        </ul>
+        <div class="bspecs">
+          <div class="srow"><span class="sk">Zinsen auf Guthaben</span><span class="sv hot">2,00 % p.a.</span></div>
+          <div class="srow"><span class="sk">Sparplan-Kosten</span><span class="sv">kostenlos · ab 1 €</span></div>
+          <div class="srow"><span class="sk">Sparplan-Auswahl</span><span class="sv">2.600+ ETFs, 2.700+ Aktien</span></div>
+          <div class="srow"><span class="sk">Ordergebühr</span><span class="sv">1 € pro Trade</span></div>
+          <div class="srow"><span class="sk">Einlagensicherung</span><span class="sv">100.000 € (gesetzl.)</span></div>
+        </div>
+        <div class="bstand">Stand: Juni 2026 · Zins variabel · Angaben ohne Gewähr</div>
         <a class="cta" href="#" rel="sponsored nofollow" data-aff="traderepublic">Zum Anbieter →</a>
       </div>
+      <!-- ====== Scalable Capital ====== -->
       <div class="broker">
         <div class="bname"><span class="bicon" style="background:#1f59ff">S</span> Scalable Capital</div>
         <span class="btag">Flatrate möglich</span>
-        <ul>
-          <li>Kostenlose ETF-Sparpläne</li>
-          <li>PRIME-Flatrate für Vieltrader</li>
-          <li>Große Aktien- & ETF-Auswahl</li>
-        </ul>
+        <div class="bspecs">
+          <div class="srow"><span class="sk">Zinsen auf Guthaben</span><span class="sv hot">2,00 % p.a.</span></div>
+          <div class="srow"><span class="sk">Sparplan-Kosten</span><span class="sv">kostenlos · ab 1 €</span></div>
+          <div class="srow"><span class="sk">Ordergebühr</span><span class="sv">0,99 € (Free)</span></div>
+          <div class="srow"><span class="sk">Flatrate-Tarif</span><span class="sv">PRIME+ ab 4,99 €/Mon.</span></div>
+          <div class="srow"><span class="sk">Einlagensicherung</span><span class="sv">100.000 € (gesetzl.)</span></div>
+        </div>
+        <div class="bstand">Stand: Juni 2026 · Zins variabel · Angaben ohne Gewähr</div>
         <a class="cta" href="#" rel="sponsored nofollow" data-aff="scalable">Zum Anbieter →</a>
       </div>
+      <!-- ====== Comdirect ====== -->
       <div class="broker">
         <div class="bname"><span class="bicon" style="background:#00a758">C</span> Comdirect</div>
-        <span class="btag">Klassische Bank</span>
-        <ul>
-          <li>Große Sparplan-Auswahl</li>
-          <li>Etablierte Direktbank</li>
-          <li>Umfangreiche Tools & Service</li>
-        </ul>
+        <span class="btag">Klassische Direktbank</span>
+        <div class="bspecs">
+          <div class="srow"><span class="sk">Zinsen (Tagesgeld)</span><span class="sv hot">1,75 % p.a.</span></div>
+          <div class="srow"><span class="sk">Kostenlose Sparpläne</span><span class="sv">576 (von ~2.100)</span></div>
+          <div class="srow"><span class="sk">Ordergebühr</span><span class="sv">3,90 € (erste 24 Mon.)</span></div>
+          <div class="srow"><span class="sk">Depotführung</span><span class="sv">kostenlos*</span></div>
+          <div class="srow"><span class="sk">Einlagensicherung</span><span class="sv">100.000 € + Fonds</span></div>
+        </div>
+        <div class="bstand">Stand: Juni 2026 · *ab 2 Trades/Quartal o. 1 Sparplan · ohne Gewähr</div>
         <a class="cta" href="#" rel="sponsored nofollow" data-aff="comdirect">Zum Anbieter →</a>
       </div>
     </div>
-    <p class="aff-note">* Hinweis: Die mit „Zum Anbieter" markierten Links sind Werbe-/Partnerlinks. Wenn du darüber ein Depot eröffnest, erhalten wir ggf. eine Provision – für dich entstehen keine zusätzlichen Kosten. Dies ist keine Anlageberatung.</p>
+    <p class="aff-note">* Hinweis: Die mit „Zum Anbieter" markierten Links sind Werbe-/Partnerlinks. Wenn du darüber ein Depot eröffnest, erhalten wir ggf. eine Provision – für dich entstehen keine zusätzlichen Kosten. Alle Konditionen (Stand Juni 2026) können sich jederzeit ändern – bitte prüfe die aktuellen Angaben beim jeweiligen Anbieter. Dies ist keine Anlageberatung.</p>
   </div>
 </section>
 
