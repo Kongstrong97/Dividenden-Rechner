@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dividenden- & Zinseszins-Rechner 2026 | Kostenlos & ohne Anmeldung</title>
-<meta name="description" content="Kostenloser Dividenden-Rechner und Zinseszins-Rechner mit Sparplan, Wiederanlage (DRIP) und deutscher Abgeltungssteuer. Berechne dein passives Einkommen & wann du finanziell frei bist. Ohne Anmeldung.">
-<meta name="keywords" content="Dividenden Rechner, Zinseszins Rechner, Sparplan Rechner, ETF Sparplan, passives Einkommen, FIRE Rechner, Abgeltungssteuer, Dividendenrendite">
-<meta name="author" content="Dividenden-Rechner.de">
+<title>Aktienrechner – Dividenden, Zinseszins & Sparplan berechnen | aktienrechner.info</title>
+<meta name="description" content="Kostenloser Aktienrechner für Dividenden, Zinseszins-Sparplan und finanzielle Freiheit – mit Wiederanlage (DRIP) und deutscher Abgeltungssteuer. Berechne dein passives Einkommen & wie viel du sparen musst. Ohne Anmeldung.">
+<meta name="keywords" content="Aktienrechner, Dividenden Rechner, Zinseszins Rechner, Sparplan Rechner, ETF Sparplan, passives Einkommen, FIRE Rechner, Abgeltungssteuer, Dividendenrendite">
+<meta name="author" content="aktienrechner.info">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://aktienrechner.info/">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Dividenden- & Zinseszins-Rechner – Kostenlos">
+<meta property="og:title" content="Aktienrechner – Dividenden, Zinseszins & FIRE | aktienrechner.info">
 <meta property="og:description" content="Berechne dein passives Einkommen aus Dividenden, deinen Zinseszins-Sparplan und wann du finanziell frei bist. Mit deutscher Steuer. Ohne Anmeldung.">
 <meta property="og:locale" content="de_DE">
 <meta property="og:url" content="https://aktienrechner.info/">
@@ -27,7 +27,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Dividenden- & Zinseszins-Rechner",
+  "name": "Aktienrechner – aktienrechner.info",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
@@ -199,7 +199,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
 <!-- ====================== HEADER ====================== -->
 <header>
   <div class="wrap hbar">
-    <div class="logo"><span>📈</span> Dividenden&shy;Rechner</div>
+    <div class="logo"><span>📈</span> aktienrechner<span style="font-weight:600;color:#86efac">.info</span></div>
     <nav>
       <a href="#rechner">Rechner</a>
       <a href="#broker">Broker-Vergleich</a>
@@ -211,8 +211,8 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
 <!-- ====================== HERO ====================== -->
 <section class="hero">
   <div class="wrap">
-    <h1>Dividenden- & Zinseszins-Rechner</h1>
-    <p>Berechne dein passives Einkommen aus Dividenden, deinen Sparplan mit Zinseszins und wann du finanziell frei bist – inklusive deutscher Abgeltungssteuer.</p>
+    <h1>Aktienrechner: Dividenden, Zinseszins & finanzielle Freiheit</h1>
+    <p>Berechne dein passives Einkommen aus Dividenden, deinen Sparplan mit Zinseszins und wie viel du sparen musst, um finanziell frei zu werden – inklusive deutscher Abgeltungssteuer.</p>
     <div class="badges">
       <span class="badge">✓ 100 % kostenlos</span>
       <span class="badge">✓ Ohne Anmeldung</span>
@@ -357,11 +357,11 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
     <!-- ---------- PANEL 3: FIRE ---------- -->
     <div class="panel" id="p-fire">
       <div class="inputs">
-        <p class="intro">Wann kannst du von deinen Dividenden leben? Berechne dein Ziel für finanzielle Freiheit.</p>
+        <p class="intro">Wie viel Geld brauchst du für die Rente – und wie viel musst du dafür monatlich sparen? Trag deine Wunschwerte ein (auch den Zielbetrag direkt), der Rest passt sich automatisch an.</p>
         <div class="field">
-          <label>Gewünschtes Monatseinkommen <span class="val" id="v-f-need">2.000 €</span></label>
+          <label>Wunsch-Einkommen im Ruhestand <span class="val" id="v-f-need">2.000 €</span></label>
           <div class="inrow">
-            <input type="range" id="r-f-need" min="500" max="10000" step="100" value="2000">
+            <input type="range" id="r-f-need" min="500" max="15000" step="50" value="2000">
             <div class="numbox"><input type="number" id="n-f-need" value="2000"></div>
           </div>
         </div>
@@ -373,6 +373,13 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
           </div>
         </div>
         <div class="field">
+          <label>🎯 Zielbetrag (benötigtes Vermögen) <span class="val" id="v-f-target">931.000 €</span></label>
+          <div class="inrow">
+            <input type="range" id="r-f-target" min="0" max="3000000" step="5000" value="931000">
+            <div class="numbox"><input type="number" id="n-f-target" value="931000"></div>
+          </div>
+        </div>
+        <div class="field">
           <label>Aktuelles Vermögen <span class="val" id="v-f-start">20.000 €</span></label>
           <div class="inrow">
             <input type="range" id="r-f-start" min="0" max="500000" step="1000" value="20000">
@@ -380,10 +387,10 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
           </div>
         </div>
         <div class="field">
-          <label>Monatliche Sparrate <span class="val" id="v-f-rate">500 €</span></label>
+          <label>Zeit bis zur Rente <span class="val" id="v-f-years">25 Jahre</span></label>
           <div class="inrow">
-            <input type="range" id="r-f-rate" min="0" max="5000" step="50" value="500">
-            <div class="numbox"><input type="number" id="n-f-rate" value="500"></div>
+            <input type="range" id="r-f-years" min="1" max="50" step="1" value="25">
+            <div class="numbox"><input type="number" id="n-f-years" value="25"></div>
           </div>
         </div>
         <div class="field">
@@ -488,7 +495,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   <div class="wrap">
     <div class="fcols">
       <div>
-        <h4>📈 Dividenden-Rechner</h4>
+        <h4>📈 aktienrechner.info</h4>
         <p style="max-width:380px">Kostenlose Rechner für Sparplan, Dividenden und finanzielle Freiheit – mit deutscher Abgeltungssteuer und ohne Anmeldung.</p>
       </div>
       <div>
@@ -504,7 +511,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
         <a class="flink" href="#faq">FAQ</a>
       </div>
     </div>
-    <p class="disc"><b>Haftungsausschluss:</b> Dieser Rechner dient ausschließlich zu Informations- und Bildungszwecken und stellt <b>keine Anlage-, Steuer- oder Rechtsberatung</b> dar. Alle Berechnungen beruhen auf den von dir eingegebenen Annahmen und garantieren keine zukünftigen Ergebnisse. Wertpapieranlagen sind mit Risiken bis zum Totalverlust verbunden. © <span id="year"></span> Dividenden-Rechner. Alle Angaben ohne Gewähr.</p>
+    <p class="disc"><b>Haftungsausschluss:</b> Dieser Rechner dient ausschließlich zu Informations- und Bildungszwecken und stellt <b>keine Anlage-, Steuer- oder Rechtsberatung</b> dar. Alle Berechnungen beruhen auf den von dir eingegebenen Annahmen und garantieren keine zukünftigen Ergebnisse. Wertpapieranlagen sind mit Risiken bis zum Totalverlust verbunden. © <span id="year"></span> aktienrechner.info. Alle Angaben ohne Gewähr.</p>
   </div>
 </footer>
 
@@ -748,58 +755,83 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   // ===================================================================
   //  BERECHNUNG 3 — FIRE / Finanzielle Freiheit
   // ===================================================================
+  // Hilfsfunktion: ein gekoppeltes Feld (Number + Slider + Label) programmatisch setzen
+  function setField(base, value, fmt){
+    const num=document.getElementById('n-'+base);
+    const rng=document.getElementById('r-'+base);
+    const lbl=document.getElementById('v-'+base);
+    const v=Math.max(0, Math.round(value));
+    if(num) num.value=v;
+    if(rng) rng.value=Math.min(Math.max(v,+rng.min),+rng.max);
+    if(lbl&&fmt) lbl.textContent=fmt(v);
+  }
+
   function calcFire(){
     const need=+n('n-f-need'), yld=+n('n-f-yield')/100, start=+n('n-f-start'),
-          rate=+n('n-f-rate'), total=+n('n-f-total')/100,
+          years=Math.max(1,Math.round(+n('n-f-years'))), total=+n('n-f-total')/100,
           tax=c('t-f-tax'), kirche=c('t-f-kirche');
     const sSatz = tax ? steuersatz(kirche) : 0;
-    // Netto-Dividendenrendite (Freibetrag bei großem Depot vernachlässigbar -> konservativ ohne)
     const nettoYield = yld*(1-sSatz);
-    const jahresbedarf = need*12;
-    const zielVermoegen = nettoYield>0 ? jahresbedarf/nettoYield : Infinity;
+    const fmtEurL = x => x.toLocaleString('de-DE')+' €';
 
-    // Simulation: in wie vielen Jahren ist das Ziel erreicht?
-    let kapital=start, jahre=0; const maxJ=80;
-    const ptsDepot=[start]; const ziel=zielVermoegen;
-    while(kapital<zielVermoegen && jahre<maxJ){
-      kapital = kapital*(1+total) + rate*12;
-      jahre++;
-      ptsDepot.push(kapital);
+    // Bidirektional: Zielbetrag <-> Wunsch-Einkommen
+    // fireAnchor merkt sich, welches Feld der Nutzer zuletzt geändert hat.
+    let zielVermoegen;
+    if(fireAnchor==='target'){
+      zielVermoegen = +n('n-f-target');
+      setField('f-need', zielVermoegen*nettoYield/12, fmtEurL);   // Einkommen daraus ableiten
+    } else {
+      zielVermoegen = nettoYield>0 ? need*12/nettoYield : 0;
+      setField('f-target', zielVermoegen, fmtEurL);               // Zielbetrag daraus ableiten
     }
-    const erreicht = kapital>=zielVermoegen && isFinite(zielVermoegen);
-    const jahrTxt = erreicht ? (jahre+' Jahre') : 'über '+maxJ+' Jahre';
-    const aktJahr = new Date().getFullYear();
-    const zieljahr = erreicht ? (aktJahr+jahre) : '–';
+
+    // Erforderliche monatliche Sparrate, um den Zielbetrag in `years` zu erreichen
+    const months=years*12;
+    const rm=Math.pow(1+total,1/12)-1;                 // effektiver Monatszins
+    const fvStart=start*Math.pow(1+rm,months);          // worauf das heutige Vermögen anwächst
+    const remaining=zielVermoegen-fvStart;
+    let pmt;
+    if(remaining<=0) pmt=0;
+    else if(rm>0) pmt = remaining*rm/(Math.pow(1+rm,months)-1);
+    else pmt = remaining/months;
+    const schonErreicht = remaining<=0;
+
+    // Vermögensverlauf mit dieser Sparrate simulieren (für Chart)
+    let kap=start; const ptsDepot=[start];
+    for(let j=0;j<years;j++){
+      for(let m=0;m<12;m++){ kap=kap*(1+rm)+pmt; }
+      ptsDepot.push(kap);
+    }
+    const monatsRente = zielVermoegen*nettoYield/12;
 
     const res=document.getElementById('res-fire');
     res.innerHTML = `
       <div class="headline">
-        <div class="metric hl"><div class="mlabel">Benötigtes Vermögen</div><div class="mval">${isFinite(zielVermoegen)?eur(zielVermoegen):'∞'}</div><div class="msub">für ${eur(need)}/Monat${tax?' netto':''}</div></div>
-        <div class="metric"><div class="mlabel">Erreicht in</div><div class="mval">${jahrTxt}</div><div class="msub">${erreicht?('ca. im Jahr '+zieljahr):'Sparrate erhöhen'}</div></div>
+        <div class="metric hl"><div class="mlabel">Dafür monatlich sparen</div><div class="mval">${schonErreicht?'0 €':eur(pmt)}</div><div class="msub">über ${years} Jahre</div></div>
+        <div class="metric"><div class="mlabel">🎯 Zielbetrag</div><div class="mval">${eur(zielVermoegen)}</div><div class="msub">≈ ${eur(monatsRente)}/Monat${tax?' netto':''} Rente</div></div>
       </div>
       <div class="chartbox">
-        <div class="chart-legend"><span><i class="dot" style="background:#93c5fd"></i>Vermögensaufbau</span><span><i class="dot" style="background:#0f2942"></i>Ziel</span></div>
+        <div class="chart-legend"><span><i class="dot" style="background:#93c5fd"></i>Vermögensaufbau</span><span><i class="dot" style="background:#0f2942"></i>Zielbetrag</span></div>
         <canvas id="cv-f"></canvas>
       </div>
       <div class="breakdown">
-        <div class="row"><span>Gewünschtes Jahreseinkommen</span><b>${eur(jahresbedarf)}</b></div>
+        <div class="row"><span>Wunsch-Einkommen im Ruhestand</span><b>${eur(need)} / Monat</b></div>
         <div class="row"><span>Netto-Dividendenrendite</span><b>${pct(nettoYield*100)}</b></div>
-        <div class="row"><span>Benötigtes Vermögen</span><b>${isFinite(zielVermoegen)?eur(zielVermoegen):'∞'}</b></div>
-        <div class="row"><span><b>Zeit bis zur finanziellen Freiheit</b></span><b class="pos">${jahrTxt}</b></div>
+        <div class="row"><span>Zielbetrag (benötigtes Vermögen)</span><b>${eur(zielVermoegen)}</b></div>
+        <div class="row"><span>Dein Vermögen wächst bis dahin auf</span><b class="pos">${eur(ptsDepot[ptsDepot.length-1])}</b></div>
+        <div class="row"><span><b>Erforderliche Sparrate</b></span><b class="pos">${schonErreicht?'0 € – Ziel bereits in Sicht!':eur(pmt)+' / Monat'}</b></div>
       </div>
-      <p class="note">💡 Die „4-%-Regel" der FIRE-Bewegung geht von einer sicheren Entnahme von ~4 % aus. Reine Dividendenstrategien sind konservativer, dafür musst du den Kapitalstock nicht verkaufen. ${!erreicht?'<b>Mit deinen aktuellen Werten dauert es sehr lange – erhöhe Sparrate oder Rendite.</b>':''}</p>`;
+      <p class="note">💡 ${schonErreicht?'Dein aktuelles Vermögen wächst mit der angenommenen Rendite von allein bis zum Zielbetrag – du müsstest dafür nichts mehr zusätzlich sparen.':'Um in <b>'+years+' Jahren</b> deinen Zielbetrag von <b>'+eur(zielVermoegen)+'</b> zu erreichen, musst du rund <b>'+eur(pmt)+' pro Monat</b> sparen. Ändere Zielbetrag, Zeit oder Rendite – alle Werte reagieren sofort.'}</p>`;
 
-    // Ziel-Linie als zweite Serie (konstant)
-    const zielArr = ptsDepot.map(()=>Math.min(ziel, Math.max(...ptsDepot, ziel)));
     drawChart(document.getElementById('cv-f'),
       [{data:ptsDepot,fill:'rgba(147,197,253,.35)',stroke:'#2563eb'}],{});
-    // Ziel-Linie zeichnen wir simpel oben drauf
-    if(isFinite(ziel)){
+    // Zielbetrag als gestrichelte Linie darüber
+    if(isFinite(zielVermoegen) && zielVermoegen>0){
       const cv=document.getElementById('cv-f'); const ctx=cv.getContext('2d');
       const dpr=window.devicePixelRatio||1; const cssW=cv.clientWidth,cssH=cv.clientHeight;
       const padL=58,padR=14,padT=12,padB=26; const W=cssW-padL-padR,H=cssH-padT-padB;
-      let max=Math.max(...ptsDepot, ziel)*1.08;
-      const yy=padT+H-(ziel/max)*H;
+      let max=Math.max(...ptsDepot, zielVermoegen)*1.08;
+      const yy=padT+H-(zielVermoegen/max)*H;
       ctx.setTransform(dpr,0,0,dpr,0,0);
       ctx.beginPath();ctx.setLineDash([6,4]);ctx.moveTo(padL,yy);ctx.lineTo(padL+W,yy);
       ctx.strokeStyle='#0f2942';ctx.lineWidth=1.5;ctx.stroke();ctx.setLineDash([]);
@@ -811,6 +843,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   function c(id){return document.getElementById(id).checked;}
 
   let activeTab='sparplan';
+  let fireAnchor='income';   // FIRE: zuletzt geändertes Feld ('income' oder 'target')
   function calcAll(){
     if(activeTab==='sparplan') calcSparplan();
     else if(activeTab==='dividende') calcDividende();
@@ -819,7 +852,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   }
 
   // ---------- LocalStorage ----------
-  const STORE='divrechner_v1';
+  const STORE='aktienrechner_v2';
   function saveState(){
     try{
       const ids=document.querySelectorAll('input[type=number],input[type=checkbox]');
@@ -872,9 +905,13 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   // Fire
   link('r-f-need','n-f-need','v-f-need',fmtEur);
   link('r-f-yield','n-f-yield','v-f-yield',fmtPct);
+  link('r-f-target','n-f-target','v-f-target',fmtEur);
   link('r-f-start','n-f-start','v-f-start',fmtEur);
-  link('r-f-rate','n-f-rate','v-f-rate',fmtEur);
+  link('r-f-years','n-f-years','v-f-years',fmtJahre);
   link('r-f-total','n-f-total','v-f-total',fmtPct);
+  // FIRE: merken, welches Feld zuletzt geändert wurde (Capture-Phase = vor der Neuberechnung)
+  ['r-f-need','n-f-need'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{fireAnchor='income';},true));
+  ['r-f-target','n-f-target'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{fireAnchor='target';},true));
 
   // Checkbox-Listener
   document.querySelectorAll('input[type=checkbox]').forEach(cb=>cb.addEventListener('change',calcAll));
