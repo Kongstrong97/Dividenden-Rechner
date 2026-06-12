@@ -51,8 +51,24 @@
   --pri:#0f2942; --pri2:#1d4e7a; --acc:#16a34a; --acc2:#22c55e;
   --gold:#d97706; --bg:#eef2f7; --card:#ffffff; --border:#dfe4ec;
   --muted:#64748b; --text:#0f172a; --soft:#f1f5f9;
+  --c-grid:#eef2f7; --c-axis:#94a3b8; --c-line:#0f2942;
   --shadow:0 1px 3px rgba(15,41,66,.08),0 8px 24px rgba(15,41,66,.06);
 }
+html[data-theme=dark]{
+  --bg:#0b1320; --card:#121c2c; --border:#243349; --muted:#8fa0b8;
+  --text:#e7eef7; --soft:#1a2638;
+  --c-grid:#22304a; --c-axis:#7286a0; --c-line:#9fb7d8;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+}
+html[data-theme=dark] .metric .mval,html[data-theme=dark] .section h2,
+html[data-theme=dark] .broker .bname,html[data-theme=dark] .rcard h3,
+html[data-theme=dark] .tab.active{color:#e3edf8}
+html[data-theme=dark] .metric.hl{background:linear-gradient(135deg,#0c2b1b,#0f3a22);border-color:#1c5b33}
+html[data-theme=dark] .metric.hl .mval{color:#4ade80}
+html[data-theme=dark] .btag{background:#11301d}
+html[data-theme=dark] .field label .val{color:#8fc1ef}
+html[data-theme=dark] .abtn,html[data-theme=dark] .csvbtn{color:#8fc1ef}
+html[data-theme=dark] .ad-inner{background:#16202f;border-color:#2a3a52;color:#5d7390}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -104,7 +120,7 @@ nav a:hover{background:rgba(255,255,255,.14);color:#fff;text-decoration:none}
 input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:6px;border-radius:6px;background:linear-gradient(90deg,var(--acc),var(--acc2));outline:none}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--acc);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.25)}
 input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--acc);cursor:pointer}
-input[type=number],input[type=text],select{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;color:var(--text);background:#fff}
+input[type=number],input[type=text],select{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;color:var(--text);background:var(--card)}
 input[type=number]:focus,select:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(22,163,74,.12)}
 .numbox{width:108px;flex-shrink:0}
 .numbox input{text-align:right;font-weight:700}
@@ -137,7 +153,7 @@ details.tax .tax-body{padding:14px}
 .metric.hl .mval{color:var(--acc)}
 .metric .msub{font-size:11.5px;color:var(--muted);margin-top:2px}
 
-.chartbox{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 10px 6px;margin-bottom:14px}
+.chartbox{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 10px 6px;margin-bottom:14px}
 .chart-legend{display:flex;gap:16px;justify-content:center;margin-bottom:4px;font-size:12px;flex-wrap:wrap}
 .chart-legend span{display:flex;align-items:center;gap:6px;color:var(--muted);font-weight:600}
 .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
@@ -185,13 +201,62 @@ canvas{width:100%;height:240px;display:block}
 
 /* ---------- FOOTER ---------- */
 footer{background:var(--pri);color:rgba(255,255,255,.75);padding:40px 0 30px;margin-top:30px;font-size:13px}
-footer .fcols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px;margin-bottom:26px}
+footer .fcols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;margin-bottom:26px}
 @media(max-width:680px){footer .fcols{grid-template-columns:1fr}}
 footer h4{color:#fff;font-size:14px;margin-bottom:10px}
 footer a{color:rgba(255,255,255,.75)}
 footer a:hover{color:#fff}
 footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-size:11.5px;line-height:1.6;color:rgba(255,255,255,.6)}
 .flink{display:block;padding:3px 0}
+
+/* ---------- JAHRES-TABELLE ---------- */
+details.years{margin:14px 0 0;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+details.years summary{padding:10px 14px;background:var(--soft);font-size:13px;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px}
+details.years summary::-webkit-details-marker{display:none}
+.csvbtn{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:12px;font-weight:600;cursor:pointer;color:var(--pri2)}
+.csvbtn:hover{border-color:var(--acc);color:var(--acc)}
+.ytwrap{max-height:260px;overflow:auto}
+.ytable{width:100%;border-collapse:collapse;font-size:12.5px}
+.ytable th{position:sticky;top:0;background:var(--soft);text-align:right;padding:7px 10px;border-bottom:1px solid var(--border);z-index:1}
+.ytable th:first-child,.ytable td:first-child{text-align:left}
+.ytable td{padding:6px 10px;border-bottom:1px solid var(--border);text-align:right;white-space:nowrap}
+.ytable tr:last-child td{border-bottom:none}
+
+/* ---------- ACTION BAR (Teilen / PDF) ---------- */
+.actbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:14px 26px;border-top:1px solid var(--border);background:var(--soft)}
+.abtn{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;color:var(--pri2);cursor:pointer;transition:.15s}
+.abtn:hover{border-color:var(--acc);color:var(--acc)}
+.sharehint{font-size:12.5px;color:var(--acc);font-weight:700;opacity:0;transition:.3s}
+.sharehint.show{opacity:1}
+
+/* ---------- INFLATION-INPUT & THEME ---------- */
+.inflinput{width:54px;padding:3px 6px;border:1px solid var(--border);border-radius:6px;font-size:12.5px;text-align:right;background:var(--card);color:var(--text)}
+.theme-btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:15px;line-height:1;flex-shrink:0;margin-left:8px}
+.theme-btn:hover{background:rgba(255,255,255,.25)}
+@media(max-width:680px){.theme-btn{margin-left:auto}}
+
+/* ---------- RATGEBER ---------- */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.rcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;color:var(--text);transition:.15s}
+.rcard:hover{text-decoration:none;border-color:var(--acc);transform:translateY(-2px)}
+.rcard .remoji{font-size:26px}
+.rcard h3{font-size:16.5px;color:var(--pri)}
+.rcard p{font-size:13.5px;color:var(--muted)}
+.rcard .rmore{margin-top:auto;font-size:13px;font-weight:700;color:var(--acc)}
+
+/* ---------- PRINT (PDF-Export) ---------- */
+@media print{
+  header,.hero .badges,.ad,#broker,#ratgeber,#faq,footer,.tabs,.actbar,.inputs,.theme-btn{display:none!important}
+  body{background:#fff}
+  .hero{padding:14px 0;background:#fff!important;color:#000}
+  .hero h1{color:#0f2942}
+  .hero p{color:#475569}
+  .calc{margin:0;padding:0}
+  .card{box-shadow:none;border:none}
+  .panel.active{grid-template-columns:1fr;padding:10px 0}
+  details.years{display:block}
+  details.years .ytwrap{max-height:none;overflow:visible}
+}
 </style>
 </head>
 <body>
@@ -203,8 +268,10 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
     <nav>
       <a href="#rechner">Rechner</a>
       <a href="#broker">Broker-Vergleich</a>
+      <a href="#ratgeber">Ratgeber</a>
       <a href="#faq">FAQ</a>
     </nav>
+    <button id="themeBtn" class="theme-btn" title="Dunkelmodus umschalten" aria-label="Dunkelmodus umschalten">🌙</button>
   </div>
 </header>
 
@@ -229,6 +296,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
       <button class="tab active" data-tab="sparplan"><span class="ti">💰</span>Sparplan<small>Zinseszins</small></button>
       <button class="tab" data-tab="dividende"><span class="ti">📈</span>Dividenden<small>Einkommen</small></button>
       <button class="tab" data-tab="fire"><span class="ti">🔥</span>Finanzielle Freiheit<small>FIRE</small></button>
+      <button class="tab" data-tab="entnahme"><span class="ti">🏖️</span>Entnahmeplan<small>Auszahlplan</small></button>
     </div>
 
     <!-- ---------- PANEL 1: SPARPLAN ---------- -->
@@ -271,7 +339,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
           </div>
         </div>
         <details class="tax" data-tax="s">
-          <summary>⚙️ Steuer berücksichtigen</summary>
+          <summary>⚙️ Steuer & Inflation</summary>
           <div class="tax-body">
             <div class="toggle-wrap" style="border-top:none;padding-top:0">
               <label for="t-s-tax">Abgeltungssteuer auf Gewinn abziehen</label>
@@ -280,6 +348,10 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
             <div class="toggle-wrap">
               <label for="t-s-kirche">Kirchensteuer (9 %)</label>
               <span class="switch"><input type="checkbox" id="t-s-kirche"><span class="slider"></span></span>
+            </div>
+            <div class="toggle-wrap">
+              <span style="font-size:13px;font-weight:600">Inflation anzeigen (<input type="number" id="n-s-infl" class="inflinput" value="2" step="0.1" min="0" max="10"> % p.a.)</span>
+              <span class="switch"><input type="checkbox" id="t-s-infl"><span class="slider"></span></span>
             </div>
           </div>
         </details>
@@ -338,7 +410,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
           <span class="switch"><input type="checkbox" id="t-d-drip" checked><span class="slider"></span></span>
         </div>
         <details class="tax" data-tax="d">
-          <summary>⚙️ Steuer berücksichtigen</summary>
+          <summary>⚙️ Steuer & Inflation</summary>
           <div class="tax-body">
             <div class="toggle-wrap" style="border-top:none;padding-top:0">
               <label for="t-d-tax">Abgeltungssteuer auf Dividenden</label>
@@ -347,6 +419,10 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
             <div class="toggle-wrap">
               <label for="t-d-kirche">Kirchensteuer (9 %)</label>
               <span class="switch"><input type="checkbox" id="t-d-kirche"><span class="slider"></span></span>
+            </div>
+            <div class="toggle-wrap">
+              <span style="font-size:13px;font-weight:600">Inflation anzeigen (<input type="number" id="n-d-infl" class="inflinput" value="2" step="0.1" min="0" max="10"> % p.a.)</span>
+              <span class="switch"><input type="checkbox" id="t-d-infl"><span class="slider"></span></span>
             </div>
           </div>
         </details>
@@ -401,7 +477,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
           </div>
         </div>
         <details class="tax" data-tax="f">
-          <summary>⚙️ Steuer berücksichtigen</summary>
+          <summary>⚙️ Steuer & Inflation</summary>
           <div class="tax-body">
             <div class="toggle-wrap" style="border-top:none;padding-top:0">
               <label for="t-f-tax">Abgeltungssteuer auf Dividenden</label>
@@ -411,10 +487,67 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
               <label for="t-f-kirche">Kirchensteuer (9 %)</label>
               <span class="switch"><input type="checkbox" id="t-f-kirche"><span class="slider"></span></span>
             </div>
+            <div class="toggle-wrap">
+              <span style="font-size:13px;font-weight:600">Inflation einrechnen (<input type="number" id="n-f-infl" class="inflinput" value="2" step="0.1" min="0" max="10"> % p.a.)</span>
+              <span class="switch"><input type="checkbox" id="t-f-infl"><span class="slider"></span></span>
+            </div>
           </div>
         </details>
       </div>
       <div class="results" id="res-fire"></div>
+    </div>
+
+    <!-- ---------- PANEL 4: ENTNAHMEPLAN ---------- -->
+    <div class="panel" id="p-entnahme">
+      <div class="inputs">
+        <p class="intro">Wie lange reicht dein Vermögen, wenn du monatlich Geld entnimmst? Der Auszahlplan für den Ruhestand.</p>
+        <div class="field">
+          <label>Startvermögen <span class="val" id="v-e-start">500.000 €</span></label>
+          <div class="inrow">
+            <input type="range" id="r-e-start" min="0" max="2000000" step="5000" value="500000">
+            <div class="numbox"><input type="number" id="n-e-start" value="500000"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Monatliche Entnahme <span class="val" id="v-e-rate">2.000 €</span></label>
+          <div class="inrow">
+            <input type="range" id="r-e-rate" min="100" max="10000" step="50" value="2000">
+            <div class="numbox"><input type="number" id="n-e-rate" value="2000"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Rendite p.a. während der Entnahme <span class="val" id="v-e-rend">5 %</span></label>
+          <div class="inrow">
+            <input type="range" id="r-e-rend" min="0" max="12" step="0.1" value="5">
+            <div class="numbox"><input type="number" id="n-e-rend" value="5" step="0.1"></div>
+          </div>
+        </div>
+        <details class="tax" data-tax="e">
+          <summary>⚙️ Steuer & Inflation</summary>
+          <div class="tax-body">
+            <div class="toggle-wrap" style="border-top:none;padding-top:0">
+              <label for="t-e-tax">Abgeltungssteuer auf Erträge</label>
+              <span class="switch"><input type="checkbox" id="t-e-tax"><span class="slider"></span></span>
+            </div>
+            <div class="toggle-wrap">
+              <label for="t-e-kirche">Kirchensteuer (9 %)</label>
+              <span class="switch"><input type="checkbox" id="t-e-kirche"><span class="slider"></span></span>
+            </div>
+            <div class="toggle-wrap">
+              <span style="font-size:13px;font-weight:600">Entnahme jährl. um Inflation erhöhen (<input type="number" id="n-e-infl" class="inflinput" value="2" step="0.1" min="0" max="10"> %)</span>
+              <span class="switch"><input type="checkbox" id="t-e-infl"><span class="slider"></span></span>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="results" id="res-entnahme"></div>
+    </div>
+
+    <!-- ---------- AKTIONEN ---------- -->
+    <div class="actbar">
+      <button id="btn-share" class="abtn">🔗 Ergebnis teilen</button>
+      <button id="btn-print" class="abtn">🖨️ Als PDF speichern</button>
+      <span id="share-hint" class="sharehint">Link kopiert ✓</span>
     </div>
   </div>
 </div>
@@ -478,6 +611,34 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   </div>
 </section>
 
+<!-- ====================== RATGEBER ====================== -->
+<section class="section" id="ratgeber">
+  <div class="wrap">
+    <h2>Ratgeber: Geldanlage verstehen</h2>
+    <p class="sub">Kompakte Guides rund um Dividenden, Steuern und finanzielle Freiheit – verständlich erklärt.</p>
+    <div class="rgrid">
+      <a class="rcard" href="ratgeber/vier-prozent-regel.html">
+        <span class="remoji">🏖️</span>
+        <h3>Die 4-%-Regel einfach erklärt</h3>
+        <p>Wie viel Vermögen brauchst du, um von deinem Depot zu leben – und wo die berühmte Regel an ihre Grenzen stößt.</p>
+        <span class="rmore">Weiterlesen →</span>
+      </a>
+      <a class="rcard" href="ratgeber/abgeltungssteuer-sparerpauschbetrag.html">
+        <span class="remoji">💶</span>
+        <h3>Abgeltungssteuer & Sparerpauschbetrag</h3>
+        <p>Was vom Gewinn wirklich übrig bleibt: Steuersätze, Freibetrag und Teilfreistellung verständlich erklärt.</p>
+        <span class="rmore">Weiterlesen →</span>
+      </a>
+      <a class="rcard" href="ratgeber/wie-viel-geld-fuer-die-rente.html">
+        <span class="remoji">🎯</span>
+        <h3>Wie viel Geld brauchst du für die Rente?</h3>
+        <p>Schritt für Schritt zu deinem persönlichen Zielbetrag – mit Beispielen, Inflation und konkreter Sparrate.</p>
+        <span class="rmore">Weiterlesen →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ====================== FAQ ====================== -->
 <section class="section" id="faq">
   <div class="wrap faq">
@@ -500,9 +661,16 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
       </div>
       <div>
         <h4>Rechner</h4>
-        <a class="flink" href="#rechner">Sparplan-Rechner</a>
-        <a class="flink" href="#rechner">Dividenden-Rechner</a>
-        <a class="flink" href="#rechner">FIRE-Rechner</a>
+        <a class="flink" href="?t=sparplan#rechner">Sparplan-Rechner</a>
+        <a class="flink" href="?t=dividende#rechner">Dividenden-Rechner</a>
+        <a class="flink" href="?t=fire#rechner">FIRE-Rechner</a>
+        <a class="flink" href="?t=entnahme#rechner">Entnahmeplan</a>
+      </div>
+      <div>
+        <h4>Ratgeber</h4>
+        <a class="flink" href="ratgeber/vier-prozent-regel.html">4-%-Regel</a>
+        <a class="flink" href="ratgeber/abgeltungssteuer-sparerpauschbetrag.html">Abgeltungssteuer</a>
+        <a class="flink" href="ratgeber/wie-viel-geld-fuer-die-rente.html">Geld für die Rente</a>
       </div>
       <div>
         <h4>Rechtliches</h4>
@@ -526,6 +694,21 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   const eur = n => (Math.round(n)).toLocaleString('de-DE') + ' €';
   const eur2 = n => n.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' €';
   const pct = n => n.toLocaleString('de-DE',{maximumFractionDigits:1}) + ' %';
+  const cssVar = nm => getComputedStyle(document.documentElement).getPropertyValue(nm).trim()||'#888';
+
+  // ---------- Jahres-Tabellen (für Anzeige + CSV-Export) ----------
+  const lastTables = {};
+  function yearTable(tab, resEl){
+    const t = lastTables[tab];
+    if(!t || !t.rows.length) return '';
+    const prev = resEl ? resEl.querySelector('details.years') : null;
+    const open = prev && prev.open ? ' open' : '';
+    let h = '<details class="years"'+open+'><summary><span>📅 Jahresübersicht</span><button class="csvbtn" type="button" data-csv="'+tab+'">⬇ CSV</button></summary><div class="ytwrap"><table class="ytable"><thead><tr>';
+    t.head.forEach(x=>h+='<th>'+x+'</th>');
+    h+='</tr></thead><tbody>';
+    t.rows.forEach(r=>{h+='<tr>';r.forEach(x=>h+='<td>'+x+'</td>');h+='</tr>';});
+    return h+'</tbody></table></div></details>';
+  }
 
   // deutsche Steuer-Konstanten
   const SOLI = 1.055;              // Solidaritätszuschlag-Faktor
@@ -542,10 +725,18 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   }
 
   // ---------- Slider <-> Number Kopplung ----------
+  const fields = {};   // numId -> {r,n,v,fmt} für programmatisches Setzen
+  function refreshField(numId){
+    const f = fields[numId]; if(!f) return;
+    const x = parseFloat(f.n.value)||0;
+    f.r.value = Math.min(Math.max(x,+f.r.min),+f.r.max);
+    if(f.v) f.v.textContent = f.fmt(x);
+  }
   function link(rangeId, numId, valId, fmt){
     const r = document.getElementById(rangeId);
     const n = document.getElementById(numId);
     const v = valId ? document.getElementById(valId) : null;
+    fields[numId] = {r:r, n:n, v:v, fmt:fmt};
     function sync(src){
       let x = parseFloat(src.value);
       if(isNaN(x)) x = 0;
@@ -597,16 +788,16 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
     for(let g=0; g<=steps; g++){
       const val = max*g/steps;
       const yy = y(val);
-      ctx.strokeStyle='#eef2f7'; ctx.lineWidth=1;
+      ctx.strokeStyle=cssVar('--c-grid'); ctx.lineWidth=1;
       ctx.beginPath();ctx.moveTo(padL,yy);ctx.lineTo(padL+W,yy);ctx.stroke();
-      ctx.fillStyle='#94a3b8'; ctx.textAlign='right';
+      ctx.fillStyle=cssVar('--c-axis'); ctx.textAlign='right';
       let lbl = val>=1000000 ? (val/1000000).toLocaleString('de-DE',{maximumFractionDigits:1})+' M'
               : val>=1000 ? Math.round(val/1000)+'k' : Math.round(val);
       ctx.fillText(lbl+' €', padL-8, yy);
     }
 
     // X-Achsen-Beschriftung (Jahre)
-    ctx.textAlign='center'; ctx.fillStyle='#94a3b8';
+    ctx.textAlign='center'; ctx.fillStyle=cssVar('--c-axis');
     const xlabels = Math.min(6, n);
     for(let k=0;k<xlabels;k++){
       const i = Math.round(k*(n-1)/(xlabels-1));
@@ -627,7 +818,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
       // Top-Linie
       ctx.beginPath();
       for(let i=0;i<n;i++){const yy=y(base[i]); i===0?ctx.moveTo(x(i),yy):ctx.lineTo(x(i),yy);}
-      ctx.strokeStyle='#0f2942'; ctx.lineWidth=2; ctx.stroke();
+      ctx.strokeStyle=cssVar('--c-line'); ctx.lineWidth=2; ctx.stroke();
     } else {
       series.forEach(s=>{
         // Fläche
@@ -649,7 +840,8 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   function calcSparplan(){
     const start = +n('n-s-start'), rate0 = +n('n-s-rate'), rend = +n('n-s-rend')/100,
           jahre = Math.max(1,Math.round(+n('n-s-jahre'))), dyn = +n('n-s-dyn')/100,
-          tax = c('t-s-tax'), kirche = c('t-s-kirche');
+          tax = c('t-s-tax'), kirche = c('t-s-kirche'),
+          infl = c('t-s-infl'), inflRate = (+n('n-s-infl')||0)/100;
     const mRate = Math.pow(1+rend, 1/12)-1; // monatlicher Zinssatz
     let kapital = start, eingezahlt = start, rate = rate0;
     const ptsTotal=[start], ptsEinz=[start], ptsGewinn=[0];
@@ -671,6 +863,9 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
       steuer = bemess * steuersatz(kirche);
       netto = kapital - steuer;
     }
+    const yrows=[];
+    for(let i=1;i<ptsTotal.length;i++) yrows.push([i, eur(ptsEinz[i]), eur(ptsGewinn[i]), eur(ptsTotal[i])]);
+    lastTables.sparplan={head:['Jahr','Eingezahlt','Gewinn','Depotwert'],rows:yrows};
     const res = document.getElementById('res-sparplan');
     res.innerHTML = `
       <div class="headline">
@@ -686,8 +881,10 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
         <div class="row"><span>Erwirtschafteter Gewinn</span><b class="pos">+ ${eur(gewinn)}</b></div>
         ${tax?`<div class="row"><span>Abgeltungssteuer (geschätzt)</span><b style="color:#b91c1c">− ${eur(steuer)}</b></div>`:''}
         <div class="row"><span><b>Endkapital${tax?' netto':''}</b></span><b>${eur(netto)}</b></div>
+        ${infl?`<div class="row"><span>Kaufkraft heute (inflationsbereinigt, ${pct(inflRate*100)})</span><b>${eur(netto/Math.pow(1+inflRate,jahre))}</b></div>`:''}
       </div>
-      <p class="note">💡 Der Zinseszinseffekt sorgt dafür, dass <b>${eur(gewinn)}</b> allein durch Rendite entstehen. ${tax?'Steuer wird vereinfacht einmalig auf den Gesamtgewinn am Ende geschätzt.':'Tipp: Aktiviere die Steuer-Option für eine Netto-Schätzung.'}</p>`;
+      ${yearTable('sparplan',res)}
+      <p class="note">💡 Der Zinseszinseffekt sorgt dafür, dass <b>${eur(gewinn)}</b> allein durch Rendite entstehen. ${tax?'Steuer wird vereinfacht einmalig auf den Gesamtgewinn am Ende geschätzt.':'Tipp: Aktiviere die Steuer-Option für eine Netto-Schätzung.'}${infl?' Inflationsbereinigt entspricht dein Endkapital einer heutigen Kaufkraft von <b>'+eur(netto/Math.pow(1+inflRate,jahre))+'</b>.':''}</p>`;
     drawChart(document.getElementById('cv-s'),
       [{data:ptsEinz,fill:'#bfdbfe'},{data:ptsGewinn,fill:'#86efac'}],{stacked:true});
   }
@@ -698,7 +895,8 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   function calcDividende(){
     const start=+n('n-d-start'), rate=+n('n-d-rate'), yld=+n('n-d-yield')/100,
           grow=+n('n-d-grow')/100, price=+n('n-d-price')/100, jahre=Math.max(1,Math.round(+n('n-d-jahre'))),
-          drip=c('t-d-drip'), tax=c('t-d-tax'), kirche=c('t-d-kirche');
+          drip=c('t-d-drip'), tax=c('t-d-tax'), kirche=c('t-d-kirche'),
+          infl=c('t-d-infl'), inflRate=(+n('n-d-infl')||0)/100;
     const sSatz = tax ? steuersatz(kirche) : 0;
 
     let depot=start, eingezahlt=start;
@@ -729,6 +927,9 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
       ptsDiv.push(nettoDiv);
     }
     const monatlichEnde = divLetztesJahr/12;
+    const yrows=[];
+    for(let i=1;i<ptsDepot.length;i++) yrows.push([i, eur(ptsDiv[i]), eur(ptsDepot[i])]);
+    lastTables.dividende={head:['Jahr','Dividende'+(tax?' (netto)':''),'Depotwert'],rows:yrows};
 
     const res=document.getElementById('res-dividende');
     res.innerHTML = `
@@ -746,8 +947,10 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
         <div class="row"><span>Dividende Jahr ${jahre}${tax?' (netto)':''}</span><b class="pos">${eur(divLetztesJahr)}</b></div>
         <div class="row"><span>Kumulierte Dividenden gesamt</span><b class="pos">${eur(divKumuliert)}</b></div>
         <div class="row"><span><b>Depotwert${drip?' (mit Wiederanlage)':''}</b></span><b>${eur(depot)}</b></div>
+        ${infl?`<div class="row"><span>Dividende Jahr ${jahre} in heutiger Kaufkraft</span><b>${eur(divLetztesJahr/Math.pow(1+inflRate,jahre))}</b></div>`:''}
       </div>
-      <p class="note">💡 ${drip?'Mit Wiederanlage (DRIP) wachsen deine Dividenden überproportional – ':'Ohne Wiederanlage erhältst du die Dividenden als Auszahlung. '}Aus anfänglich ${eur(divJahr1)} werden im letzten Jahr <b>${eur(divLetztesJahr)}</b>.</p>`;
+      ${yearTable('dividende',res)}
+      <p class="note">💡 ${drip?'Mit Wiederanlage (DRIP) wachsen deine Dividenden überproportional – ':'Ohne Wiederanlage erhältst du die Dividenden als Auszahlung. '}Aus anfänglich ${eur(divJahr1)} werden im letzten Jahr <b>${eur(divLetztesJahr)}</b>.${infl?' Inflationsbereinigt entspricht das einer heutigen Kaufkraft von <b>'+eur(divLetztesJahr/Math.pow(1+inflRate,jahre))+'</b> pro Jahr.':''}</p>`;
     drawChart(document.getElementById('cv-d'),
       [{data:ptsDepot,fill:'rgba(134,239,172,.35)',stroke:'#16a34a'}],{});
   }
@@ -769,7 +972,8 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   function calcFire(){
     const need=+n('n-f-need'), yld=+n('n-f-yield')/100, start=+n('n-f-start'),
           years=Math.max(1,Math.round(+n('n-f-years'))), total=+n('n-f-total')/100,
-          tax=c('t-f-tax'), kirche=c('t-f-kirche');
+          tax=c('t-f-tax'), kirche=c('t-f-kirche'),
+          infl=c('t-f-infl'), inflRate=(+n('n-f-infl')||0)/100;
     const sSatz = tax ? steuersatz(kirche) : 0;
     const nettoYield = yld*(1-sSatz);
     const fmtEurL = x => x.toLocaleString('de-DE')+' €';
@@ -796,6 +1000,14 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
     else pmt = remaining/months;
     const schonErreicht = remaining<=0;
 
+    // Inflation: Zielbetrag, der die HEUTIGE Kaufkraft des Wunsch-Einkommens sichert
+    let zielInfl=0, pmtInfl=0;
+    if(infl){
+      zielInfl = zielVermoegen*Math.pow(1+inflRate,years);
+      const remInfl = zielInfl - fvStart;
+      pmtInfl = remInfl<=0 ? 0 : (rm>0 ? remInfl*rm/(Math.pow(1+rm,months)-1) : remInfl/months);
+    }
+
     // Vermögensverlauf mit dieser Sparrate simulieren (für Chart)
     let kap=start; const ptsDepot=[start];
     for(let j=0;j<years;j++){
@@ -803,6 +1015,9 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
       ptsDepot.push(kap);
     }
     const monatsRente = zielVermoegen*nettoYield/12;
+    const yrowsF=[];
+    for(let i=1;i<ptsDepot.length;i++) yrowsF.push([i, eur(ptsDepot[i])]);
+    lastTables.fire={head:['Jahr','Vermögen'],rows:yrowsF};
 
     const res=document.getElementById('res-fire');
     res.innerHTML = `
@@ -820,8 +1035,11 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
         <div class="row"><span>Zielbetrag (benötigtes Vermögen)</span><b>${eur(zielVermoegen)}</b></div>
         <div class="row"><span>Dein Vermögen wächst bis dahin auf</span><b class="pos">${eur(ptsDepot[ptsDepot.length-1])}</b></div>
         <div class="row"><span><b>Erforderliche Sparrate</b></span><b class="pos">${schonErreicht?'0 € – Ziel bereits in Sicht!':eur(pmt)+' / Monat'}</b></div>
+        ${infl?`<div class="row"><span>Zielbetrag inkl. Inflation (${pct(inflRate*100)} p.a.)</span><b>${eur(zielInfl)}</b></div>
+        <div class="row"><span><b>Sparrate für inflationssicheres Ziel</b></span><b class="pos">${pmtInfl<=0?'0 €':eur(pmtInfl)+' / Monat'}</b></div>`:''}
       </div>
-      <p class="note">💡 ${schonErreicht?'Dein aktuelles Vermögen wächst mit der angenommenen Rendite von allein bis zum Zielbetrag – du müsstest dafür nichts mehr zusätzlich sparen.':'Um in <b>'+years+' Jahren</b> deinen Zielbetrag von <b>'+eur(zielVermoegen)+'</b> zu erreichen, musst du rund <b>'+eur(pmt)+' pro Monat</b> sparen. Ändere Zielbetrag, Zeit oder Rendite – alle Werte reagieren sofort.'}</p>`;
+      ${yearTable('fire',res)}
+      <p class="note">💡 ${schonErreicht?'Dein aktuelles Vermögen wächst mit der angenommenen Rendite von allein bis zum Zielbetrag – du müsstest dafür nichts mehr zusätzlich sparen.':'Um in <b>'+years+' Jahren</b> deinen Zielbetrag von <b>'+eur(zielVermoegen)+'</b> zu erreichen, musst du rund <b>'+eur(pmt)+' pro Monat</b> sparen. Ändere Zielbetrag, Zeit oder Rendite – alle Werte reagieren sofort.'}${infl?' <b>Mit Inflation:</b> Damit dein Wunsch-Einkommen in '+years+' Jahren noch die heutige Kaufkraft hat, brauchst du <b>'+eur(zielInfl)+'</b> – das erfordert <b>'+eur(pmtInfl)+' pro Monat</b>.':''}</p>`;
 
     drawChart(document.getElementById('cv-f'),
       [{data:ptsDepot,fill:'rgba(147,197,253,.35)',stroke:'#2563eb'}],{});
@@ -834,8 +1052,65 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
       const yy=padT+H-(zielVermoegen/max)*H;
       ctx.setTransform(dpr,0,0,dpr,0,0);
       ctx.beginPath();ctx.setLineDash([6,4]);ctx.moveTo(padL,yy);ctx.lineTo(padL+W,yy);
-      ctx.strokeStyle='#0f2942';ctx.lineWidth=1.5;ctx.stroke();ctx.setLineDash([]);
+      ctx.strokeStyle=cssVar('--c-line');ctx.lineWidth=1.5;ctx.stroke();ctx.setLineDash([]);
     }
+  }
+
+  // ===================================================================
+  //  BERECHNUNG 4 — ENTNAHMEPLAN / Auszahlplan
+  // ===================================================================
+  function calcEntnahme(){
+    const start=+n('n-e-start'), entn0=+n('n-e-rate'), rend=+n('n-e-rend')/100,
+          tax=c('t-e-tax'), kirche=c('t-e-kirche'),
+          infl=c('t-e-infl'), inflRate=(+n('n-e-infl')||0)/100;
+    const sSatz = tax ? steuersatz(kirche) : 0;
+    const rNet = rend*(1-sSatz);              // vereinfachte Nettorendite nach Steuer
+    const rm = Math.pow(1+rNet,1/12)-1;
+    const maxM = 1200;                        // Simulation max. 100 Jahre
+
+    let kap=start, entn=entn0, monate=0, gesamt=0, jahrEntn=0;
+    const pts=[start]; const yrows=[];
+    while(kap>0 && monate<maxM){
+      kap = kap*(1+rm) - entn;
+      gesamt += entn; jahrEntn += entn; monate++;
+      if(monate%12===0){
+        pts.push(Math.max(kap,0));
+        yrows.push([monate/12, eur(jahrEntn), eur(Math.max(kap,0))]);
+        jahrEntn=0;
+        if(infl) entn*=(1+inflRate);
+      }
+      if(kap<=0) break;
+    }
+    if(monate%12!==0){ pts.push(Math.max(kap,0)); yrows.push([Math.ceil(monate/12), eur(jahrEntn), eur(Math.max(kap,0))]); }
+    lastTables.entnahme={head:['Jahr','Entnahme im Jahr','Restvermögen'],rows:yrows};
+
+    const ewig = monate>=maxM && kap>0;
+    const jahre = Math.floor(monate/12), restM = monate%12;
+    const dauerTxt = ewig ? '100+ Jahre' : (jahre+' J.'+(restM?' '+restM+' Mon.':''));
+    const aktJahr = new Date().getFullYear();
+
+    const res=document.getElementById('res-entnahme');
+    res.innerHTML = `
+      <div class="headline">
+        <div class="metric hl"><div class="mlabel">Dein Geld reicht</div><div class="mval">${dauerTxt}</div><div class="msub">${ewig?'praktisch unbegrenzt – die Rendite trägt die Entnahme':'bis ca. '+(aktJahr+jahre)}</div></div>
+        <div class="metric"><div class="mlabel">Gesamt entnommen</div><div class="mval">${eur(gesamt)}</div><div class="msub">${eur(entn0)}/Monat zu Beginn${infl?', jährl. +'+pct(inflRate*100):''}</div></div>
+      </div>
+      <div class="chartbox">
+        <div class="chart-legend"><span><i class="dot" style="background:#fca5a5"></i>Restvermögen</span></div>
+        <canvas id="cv-e"></canvas>
+      </div>
+      <div class="breakdown">
+        <div class="row"><span>Startvermögen</span><b>${eur(start)}</b></div>
+        <div class="row"><span>Monatliche Entnahme (Start)</span><b>${eur(entn0)}</b></div>
+        <div class="row"><span>Rendite${tax?' nach Steuer':''}</span><b>${pct(rNet*100)}</b></div>
+        <div class="row"><span>Gesamt entnommen</span><b class="pos">${eur(gesamt)}</b></div>
+        <div class="row"><span><b>Vermögen reicht für</b></span><b class="pos">${dauerTxt}</b></div>
+      </div>
+      ${yearTable('entnahme',res)}
+      <p class="note">💡 ${ewig?'Deine Entnahme liegt unter den laufenden Erträgen – das Vermögen schrumpft nicht dauerhaft. Du lebst quasi „vom Zins".':'Nach '+dauerTxt+' ist das Vermögen aufgebraucht. Kleinere Entnahme oder höhere Rendite verlängern die Dauer deutlich.'} Hinweis: Die Rechnung nutzt eine konstante Durchschnittsrendite – reale Börsenjahre schwanken (Renditereihenfolge-Risiko).</p>`;
+
+    drawChart(document.getElementById('cv-e'),
+      [{data:pts,fill:'rgba(252,165,165,.3)',stroke:'#dc2626'}],{});
   }
 
   // ---------- Helper ----------
@@ -847,7 +1122,8 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   function calcAll(){
     if(activeTab==='sparplan') calcSparplan();
     else if(activeTab==='dividende') calcDividende();
-    else calcFire();
+    else if(activeTab==='fire') calcFire();
+    else calcEntnahme();
     saveState();
   }
 
@@ -867,10 +1143,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
       Object.keys(o).forEach(k=>{
         if(k==='_tab')return;
         const el=document.getElementById(k); if(!el)return;
-        if(el.type==='checkbox') el.checked=o[k]; else el.value=o[k];
-        // Range + Label nachziehen
-        const r=document.getElementById(k.replace('n-','r-'));
-        if(r) r.value=Math.min(Math.max(parseFloat(o[k])||0,+r.min),+r.max);
+        if(el.type==='checkbox') el.checked=o[k]; else { el.value=o[k]; refreshField(k); }
       });
       if(o._tab) switchTab(o._tab,true);
     }catch(e){}
@@ -878,6 +1151,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
 
   // ---------- Tabs ----------
   function switchTab(name,silent){
+    if(!document.getElementById('p-'+name)) name='sparplan';
     activeTab=name;
     document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===name));
     document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='p-'+name));
@@ -912,9 +1186,68 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
   // FIRE: merken, welches Feld zuletzt geändert wurde (Capture-Phase = vor der Neuberechnung)
   ['r-f-need','n-f-need'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{fireAnchor='income';},true));
   ['r-f-target','n-f-target'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{fireAnchor='target';},true));
+  // Entnahmeplan
+  link('r-e-start','n-e-start','v-e-start',fmtEur);
+  link('r-e-rate','n-e-rate','v-e-rate',fmtEur);
+  link('r-e-rend','n-e-rend','v-e-rend',fmtPct);
 
-  // Checkbox-Listener
+  // Checkbox- & Inflations-Listener
   document.querySelectorAll('input[type=checkbox]').forEach(cb=>cb.addEventListener('change',calcAll));
+  document.querySelectorAll('.inflinput').forEach(el=>el.addEventListener('input',calcAll));
+
+  // ---------- Teilen / PDF / CSV ----------
+  function showHint(){
+    const h=document.getElementById('share-hint');
+    h.classList.add('show');
+    clearTimeout(window._ht); window._ht=setTimeout(()=>h.classList.remove('show'),2500);
+  }
+  document.getElementById('btn-share').addEventListener('click',()=>{
+    const sp=new URLSearchParams(); sp.set('t',activeTab);
+    document.querySelectorAll('.panel.active input[type=number]').forEach(el=>sp.set(el.id,el.value));
+    document.querySelectorAll('.panel.active input[type=checkbox]').forEach(el=>sp.set(el.id,el.checked?'1':'0'));
+    const url=location.origin+location.pathname+'?'+sp.toString();
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(showHint).catch(()=>prompt('Link zum Teilen kopieren:',url));
+    } else { prompt('Link zum Teilen kopieren:',url); }
+  });
+  document.getElementById('btn-print').addEventListener('click',()=>window.print());
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('.csvbtn'); if(!b) return;
+    e.preventDefault(); e.stopPropagation();
+    const t=lastTables[b.dataset.csv]; if(!t) return;
+    const csv=[t.head.join(';')].concat(t.rows.map(r=>r.join(';'))).join('\n');
+    const blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='aktienrechner-'+b.dataset.csv+'.csv';
+    a.click(); URL.revokeObjectURL(a.href);
+  });
+
+  // ---------- Geteilte Links (URL-Parameter) ----------
+  function loadURLParams(){
+    try{
+      const sp=new URLSearchParams(location.search);
+      if(![...sp.keys()].length) return;
+      sp.forEach((val,key)=>{
+        if(key==='t'){ switchTab(val,true); return; }
+        const el=document.getElementById(key); if(!el) return;
+        if(el.type==='checkbox') el.checked=(val==='1');
+        else { el.value=val; refreshField(key); }
+      });
+    }catch(e){}
+  }
+
+  // ---------- Dark Mode ----------
+  const themeBtn=document.getElementById('themeBtn');
+  function setTheme(t){
+    document.documentElement.dataset.theme=t;
+    themeBtn.textContent = t==='dark'?'☀️':'🌙';
+    try{localStorage.setItem('ar_theme',t)}catch(e){}
+  }
+  themeBtn.addEventListener('click',()=>{
+    setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+    calcAll();   // Charts mit neuen Farben neu zeichnen
+  });
+  try{ const t=localStorage.getItem('ar_theme'); if(t) setTheme(t); }catch(e){}
 
   // Footer-Jahr
   document.getElementById('year').textContent=new Date().getFullYear();
@@ -931,6 +1264,7 @@ footer .disc{border-top:1px solid rgba(255,255,255,.15);padding-top:18px;font-si
 
   // Start
   loadState();
+  loadURLParams();   // geteilte Links überschreiben gespeicherte Werte
   calcAll();
   window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(calcAll,150);});
 })();
